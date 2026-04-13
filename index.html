@@ -1,2 +1,131 @@
-<img src="assets/banner.png">
-<img src="assets/logo.png">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Holzphysik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #0e0e0e;
+      color: #f5f5f5;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 70vh;
+      background: url("assets/banner.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero img {
+      width: 140px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    .claim {
+      margin-top: 10px;
+      color: #d4af37;
+      font-weight: 500;
+    }
+
+    /* CONTENT */
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .features {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-top: 40px;
+    }
+
+    .feature {
+      padding: 20px;
+      border: 1px solid #222;
+      border-radius: 10px;
+      background: #151515;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      border-top: 1px solid #222;
+    }
+
+    a {
+      color: #d4af37;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <img src="assets/logo.png" alt="Logo">
+    <h1>Holzphysik</h1>
+    <div class="claim">Wissenschaftlich gedacht · Handwerklich gemacht</div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="section">
+  <h2>Über uns</h2>
+  <p>
+    Holzphysik verbindet präzises Handwerk mit wissenschaftlichem Denken.
+    Jedes Produkt entsteht mit höchster Sorgfalt, Qualität und Liebe zum Detail.
+  </p>
+
+  <div class="features">
+    <div class="feature">🔬 Wissenschaft im Hintergrund</div>
+    <div class="feature">🌳 Natur im Material</div>
+    <div class="feature">🛠️ Handwerk im Detail</div>
+    <div class="feature">📍 Made in Göttingen</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="impressum.html">Impressum</a> |
+  <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+</body>
+</html>
