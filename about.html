@@ -1,194 +1,367 @@
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Über Holzphysik</title>
-
   <link rel="stylesheet" href="assets/styles/shared.css">
-  <link rel="stylesheet" href="assets/styles/index.css">
-
   <style>
     .about-hero {
-      padding: 88px 0 40px;
+      padding: 88px 0 56px;
+      background:
+        linear-gradient(to bottom, rgba(10,8,7,0.35), rgba(10,8,7,0.88)),
+        url("assets/banner.png") center/cover no-repeat;
       border-bottom: 1px solid var(--line);
     }
 
-    .about-grid {
+    .about-hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
       align-items: center;
     }
 
-    .about-image {
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+    .about-copy {
+      max-width: 620px;
     }
 
-    .about-image img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    .about-content {
-      max-width: 540px;
-    }
-
-    .about-content h1 {
-      margin-bottom: 18px;
-    }
-
-    .about-content p {
+    .about-copy p {
       color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 18px;
+      max-width: 48ch;
+      margin: 0 0 18px;
     }
 
-    .about-section {
-      padding: 64px 0;
+    .about-principles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 24px 0 30px;
     }
 
-    .about-section .container {
-      max-width: 760px;
+    .about-principles span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
-    .about-section h2 {
-      margin-bottom: 16px;
+    .about-principles span::before {
+      content: "•";
+      margin-right: 8px;
+      color: var(--accent);
     }
 
-    .linkedin {
-      margin-top: 20px;
+    .about-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0 0 34px;
     }
 
-    .linkedin a {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 999px;
+    .about-image-card {
+      background: rgba(15, 12, 10, 0.72);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.24);
+    }
+
+    .about-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .about-image-note {
+      margin: 14px 2px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .story-card {
+      background: var(--card);
       border: 1px solid var(--line);
-      color: var(--text);
+      border-radius: var(--radius);
+      padding: 24px;
     }
 
-    .linkedin a:hover {
-      background: rgba(255,255,255,0.05);
-      text-decoration: none;
+    .story-card h2,
+    .story-card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
     }
 
-    @media (max-width: 920px) {
-      .about-grid {
+    .story-card p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-card.is-wide {
+      grid-column: 1 / -1;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .timeline-step:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .timeline-label {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .timeline-step p {
+      margin: 0;
+    }
+
+    .about-gallery {
+      padding-top: 0;
+    }
+
+    .gallery-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x proximity;
+    }
+
+    .gallery-scroll img {
+      height: 220px;
+      width: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+      background: #120f0d;
+    }
+
+    .gallery-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-thumb {
+      background: rgba(199,154,99,0.6);
+      border-radius: 999px;
+    }
+
+    .gallery-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+    }
+
+    @media (max-width: 980px) {
+      .about-hero-grid,
+      .story-grid {
         grid-template-columns: 1fr;
+      }
+
+      .timeline-step {
+        grid-template-columns: 1fr;
+        gap: 6px;
       }
     }
   </style>
-
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Holzphysik Logo">
+        <span>Holzphysik</span>
+      </a>
 
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="Holzphysik Logo">
-      <span>Holzphysik</span>
-    </a>
-
-```
-<nav class="nav-links">
-  <a href="index.html">Start</a>
-  <a href="schneidebretter.html">Schneidebretter</a>
-  <a href="pflegeprodukte.html">Pflegeprodukte</a>
-  <a class="active" href="about.html">Über Holzphysik</a>
-  <a href="kontakt.html">Kontakt</a>
-</nav>
-```
-
-  </div>
-</header>
-
-<!-- HERO -->
-
-<section class="about-hero">
-  <div class="container about-grid">
-
-```
-<div class="about-content">
-  <div class="eyebrow">Über mich</div>
-  <h1>Holzphysik</h1>
-
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua.
-  </p>
-
-  <div class="linkedin">
-    <a href="https://www.linkedin.com/in/fabian-sohns" target="_blank">LinkedIn Profil</a>
-  </div>
-</div>
-
-<div class="about-image">
-  <img src="assets/banner.png" alt="Arbeit an einem Holzprodukt">
-</div>
-```
-
-  </div>
-</section>
-
-<!-- SECTION 1 -->
-
-<section class="about-section">
-  <div class="container">
-    <h2>Wer bin ich</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-    <p>
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    </p>
-  </div>
-</section>
-
-<!-- SECTION 2 -->
-
-<section class="about-section">
-  <div class="container">
-    <h2>Warum Holzphysik</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
-    </p>
-    <p>
-      Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-    </p>
-  </div>
-</section>
-
-<!-- SECTION 3 -->
-
-<section class="about-section">
-  <div class="container">
-    <h2>Ansatz & Gestaltung</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est,
-      qui dolorem ipsum quia dolor sit amet.
-    </p>
-    <p>
-      Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
-    </p>
-  </div>
-</section>
-
-<footer>
-  <div class="container footer-inner">
-    <div>© Holzphysik</div>
-    <div class="footer-links">
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="schneidebretter.html">Schneidebretter</a>
+        <a href="pflegeprodukte.html">Pflegeprodukte</a>
+        <a class="active" href="about.html">Über Holzphysik</a>
+        <div class="nav-item">
+          <a href="kontakt.html">Kontakt</a>
+          <div class="dropdown">
+            <a href="produktfeedback.html">Produktfeedback</a>
+          </div>
+        </div>
+      </nav>
     </div>
-  </div>
-</footer>
+  </header>
 
+  <section class="about-hero">
+    <div class="container about-hero-grid">
+      <div class="about-copy">
+        <div class="eyebrow">Über Holzphysik</div>
+        <h1>Teilchenphysik, Handwerk und der Anspruch, sich weiterzuentwickeln.</h1>
+        <p>
+          Holzphysik ist aus dem Wunsch entstanden, mich weiterzuentwickeln,
+          mein Hobby auf das nächste Level zu bringen und daraus eine eigene Form
+          von Gestaltung entstehen zu lassen.
+        </p>
+        <p>
+          Neue Herausforderungen gehören für mich dazu – genau darin liegt der Fortschritt.
+        </p>
+
+        <div class="about-principles">
+          <span>Physik als Hintergrund</span>
+          <span>Holzarbeit als Leidenschaft</span>
+          <span>Werkstatt als eigener Raum</span>
+        </div>
+
+        <div class="about-actions">
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/fabian-sohns/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="about-image-card">
+        <img class="about-image" src="assets/banner.png" alt="Arbeit in der Werkstatt">
+        <p class="about-image-note">Beim Arbeiten in der Werkstatt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container story-grid">
+      <article class="story-card">
+        <div class="eyebrow">Hintergrund</div>
+        <h2>Wer ich bin</h2>
+        <p>
+          Mein Hintergrund liegt in der Teilchenphysik. Studium und Promotion haben
+          meinen Blick auf Strukturen geprägt. Komplexe Probleme zu verstehen und zu
+          analysieren, ist ein zentraler Teil wissenschaftlichen Arbeitens.
+        </p>
+        <p>
+          Genau dieser Ansatz fließt heute auch in die Arbeit mit Holz ein:
+          Wie entsteht ein einzigartiges Board? Was lässt sich neu ausprobieren?
+          Was ist zu beachten? Welche Werkzeuge sind sinnvoll, was muss vorbereitet werden?
+        </p>
+        <p>
+          Jedes Projekt ist für mich eine neue Herausforderung – und damit immer auch ein Unikat.
+        </p>
+      </article>
+
+      <article class="story-card">
+        <div class="eyebrow">Anspruch</div>
+        <h2>Warum Holzphysik</h2>
+        <p>
+          Holzphysik ist nicht nur ein Name, sondern eine Haltung.
+          Wissenschaftliches Denken, handwerkliche Praxis und Gestaltung kommen hier zusammen.
+        </p>
+        <p>
+          Es geht mir nicht darum, möglichst viel zu machen. Ich möchte neue Dinge ausprobieren,
+          verstehen und sauber umsetzen. Ideen entwickeln, testen und so lange weiterdenken,
+          bis sie funktionieren.
+        </p>
+        <p>
+          Reduziert, nachvollziehbar und mit eigener Handschrift.
+        </p>
+      </article>
+
+      <article class="story-card is-wide">
+        <div class="eyebrow">Weg</div>
+        <h2>Wie es angefangen hat</h2>
+        <div class="timeline">
+          <div class="timeline-step">
+            <div class="timeline-label">Göttingen</div>
+            <p>
+              Die ersten Versuche mit Epoxidharz entstanden im Wohnzimmer in Göttingen –
+              improvisiert, experimentell und mit dem Wunsch, Dinge selbst auszuprobieren.
+              Das erste Werkzeug war eine Stichsäge.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Hamburg</div>
+            <p>
+              Weiter ging es in einem Fahrradkeller in Hamburg – mit einem Lichtschalter
+              auf Timer, der alle fünf Minuten ausgegangen ist. Dort entstanden erste
+              Möbelstücke für das eigene Zuhause: ein Tisch fürs Wohnzimmer, ein zweiter
+              für die Küche. Damals noch stark geprägt von Epoxidharz und dem Ausprobieren.
+            </p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-label">Heute</div>
+            <p>
+              Heute ist daraus in Göttingen eine eigene Werkstatt im Keller geworden –
+              die Werkstatt, die ich mir lange gewünscht habe. Mit Werkbank, Absaugung
+              und professionellen Maschinen ist aus dem improvisierten Anfang ein klarer
+              Arbeitsraum entstanden. Der Anspruch ist dabei derselbe geblieben:
+              verstehen, aufbauen, verbessern – mit mehr Fokus auf gutes Holz und darauf,
+              dessen Charakter sauber herauszuarbeiten.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="story-card is-wide">
+        <div class="eyebrow">Arbeitsweise</div>
+        <h2>Was daraus entsteht</h2>
+        <p>
+          Die Produkte entstehen nicht zufällig.
+        </p>
+        <p>
+          Es geht mir darum, neue Dinge auszuprobieren, zu verstehen und sauber umzusetzen.
+          Ideen werden entwickelt, getestet und weitergedacht, bis sie funktionieren.
+        </p>
+        <p>
+          Und wenn etwas nicht funktioniert, gehört das dazu. Fehler sind Teil des Prozesses.
+          Nichts wird einfach weggeworfen, sondern später oft wieder aufgegriffen und weiterverwendet.
+          So entsteht mit der Zeit ein eigener Umgang mit Material – reduziert, durchdacht und mit möglichst wenig Verschwendung.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="about-gallery">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Werkstatt</div>
+        <h2>Einblicke</h2>
+        <p>Werkstatt, Werkzeuge und Prozesse.</p>
+      </div>
+
+      <div class="gallery-scroll">
+        <img src="assets/banner.png" alt="Werkstattansicht">
+        <img src="assets/banner.png" alt="Werkzeuge in der Werkstatt">
+        <img src="assets/banner.png" alt="Detail aus dem Arbeitsprozess">
+        <img src="assets/banner.png" alt="Material und Oberfläche">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© Holzphysik</div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
