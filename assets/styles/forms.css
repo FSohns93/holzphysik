@@ -1,0 +1,158 @@
+.page-hero {
+  padding: 88px 0 56px;
+  background:
+    linear-gradient(to bottom, rgba(10,8,7,0.35), rgba(10,8,7,0.88)),
+    url("../banner.png") center/cover no-repeat;
+  border-bottom: 1px solid var(--line);
+}
+
+.lead {
+  max-width: 62ch;
+  color: var(--muted);
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.info-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.info-card,
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+}
+
+.info-card h3,
+.form-card h3 {
+  margin: 0 0 12px;
+}
+
+.info-card p,
+.info-card li,
+.form-card p {
+  color: var(--muted);
+}
+
+.info-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.info-card ul li + li {
+  margin-top: 6px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-item {
+  display: grid;
+  gap: 4px;
+}
+
+.contact-label {
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-value {
+  color: var(--text);
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.form-grid.two-cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+select {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #120f0d;
+  color: var(--text);
+  font: inherit;
+}
+
+select:focus {
+  outline: 1px solid var(--accent);
+  border-color: var(--accent);
+}
+
+textarea.large {
+  min-height: 180px;
+}
+
+.inline-note {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.choice-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text);
+}
+
+.choice-row input[type="checkbox"],
+.choice-row input[type="radio"] {
+  width: auto;
+  accent-color: var(--accent);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.code-note {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.12);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 980px) {
+  .page-layout,
+  .form-grid.two-cols {
+    grid-template-columns: 1fr;
+  }
+}

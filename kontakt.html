@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Holzphysik</title>
+  <link rel="stylesheet" href="assets/styles/shared.css">
+  <link rel="stylesheet" href="assets/styles/forms.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Holzphysik Logo">
+        <span>Holzphysik</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="schneidebretter.html">Schneidebretter</a>
+        <a href="pflegeprodukte.html">Pflegeprodukte</a>
+        <a href="about.html">Über Holzphysik</a>
+        <div class="nav-item">
+          <a href="kontakt.html">Kontakt</a>
+          <div class="dropdown">
+            <a class="active" href="produktfeedback.html">Produktfeedback</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Kontakt</div>
+      <h1>Allgemeiner Kontakt</h1>
+      <p class="lead">
+        Für Fragen zu Holzphysik, zu Produkten, zu Varianten oder zur generellen Kontaktaufnahme.
+        Die Auswahl erfolgt bewusst direkt und persönlich statt über einen klassischen Shop.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container page-layout">
+      <div class="info-stack">
+        <article class="info-card">
+          <h3>Kontakt auf einen Blick</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="contact-label">E-Mail</span>
+              <span class="contact-value"><a href="mailto:info@holzphysik.de">info@holzphysik.de</a></span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Standort</span>
+              <span class="contact-value">Göttingen</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Themen</span>
+              <span class="contact-value">Allgemeine Fragen, Produkte, Varianten, Pflege, Zusammenarbeit</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <h3>Wofür diese Seite gedacht ist</h3>
+          <ul>
+            <li>allgemeine Kontaktaufnahme</li>
+            <li>Fragen zu Schneidebrettern oder Pflegeprodukten</li>
+            <li>Interesse an Varianten, Größen oder Einzelstücken</li>
+            <li>Fragen zu Anwendung, Pflege oder Ablauf</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>Produktfeedback</h3>
+          <p>
+            Für Rückmeldungen zu bereits genutzten Produkten gibt es eine eigene Seite mit passendem Formular.
+          </p>
+          <p>
+            <a href="produktfeedback.html">Zur Produktfeedback-Seite</a>
+          </p>
+        </article>
+      </div>
+
+      <article class="form-card">
+        <h3>Nachricht senden</h3>
+        <p>
+          Direkt und ohne Umwege in mein Postfach.
+        </p>
+
+        <form id="kontakt-form" action="https://formspree.io/f/xjgjyowj" method="POST">
+          <input type="hidden" name="formulartyp" value="Allgemeiner Kontakt">
+
+          <div class="form-grid two-cols">
+            <div>
+              <label for="kontakt-name">Name</label>
+              <input id="kontakt-name" type="text" name="name" required>
+            </div>
+
+            <div>
+              <label for="kontakt-email">E-Mail</label>
+              <input id="kontakt-email" type="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <label for="kontakt-betreff">Betreff</label>
+              <input id="kontakt-betreff" type="text" name="betreff" placeholder="Worum geht es?" required>
+            </div>
+
+            <div>
+              <label for="kontakt-nachricht">Nachricht</label>
+              <textarea id="kontakt-nachricht" class="large" name="message" placeholder="Deine Nachricht ..." required></textarea>
+            </div>
+          </div>
+
+          <div class="inline-note">
+            Wenn es um ein konkretes Produkt geht, kannst du Modell, Variante oder Wunsch direkt in die Nachricht schreiben.
+          </div>
+
+          <div class="form-actions">
+            <button class="submit-btn" type="submit">Nachricht senden</button>
+          </div>
+
+          <p class="form-note">
+            Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Angaben zur Bearbeitung
+            der Anfrage einverstanden.
+          </p>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© Holzphysik · Handwerk trifft Teilchenphysik</div>
+      <div class="footer-links">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="produktfeedback.html">Produktfeedback</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

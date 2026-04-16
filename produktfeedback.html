@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produktfeedback – Holzphysik</title>
+  <link rel="stylesheet" href="assets/styles/shared.css">
+  <link rel="stylesheet" href="assets/styles/forms.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="Holzphysik Logo">
+        <span>Holzphysik</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="index.html">Start</a>
+        <a href="schneidebretter.html">Schneidebretter</a>
+        <a href="pflegeprodukte.html">Pflegeprodukte</a>
+        <a href="about.html">Über Holzphysik</a>
+        <div class="nav-item">
+          <a href="kontakt.html">Kontakt</a>
+          <div class="dropdown">
+            <a class="active" href="produktfeedback.html">Produktfeedback</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Feedback</div>
+      <h1>Produktfeedback</h1>
+      <p class="lead">
+        Rückmeldungen zu Produkt, Nutzung, Pflege oder Versand helfen dabei,
+        Holzphysik präziser weiterzuentwickeln.
+      </p>
+      <p class="inline-note">
+        Für allgemeine Anfragen geht es hier zurück zum <a href="kontakt.html">Kontakt</a>.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container page-layout">
+      <div class="info-stack">
+        <article class="info-card">
+          <h3>Worum es hier geht</h3>
+          <p>
+            Diese Seite ist für Rückmeldungen zu Produkten, Nutzungserfahrungen
+            und einzelnen Eindrücken gedacht.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Hilfreich sind zum Beispiel</h3>
+          <ul>
+            <li>Eindruck zu Material, Verarbeitung oder Haptik</li>
+            <li>Erfahrungen im Alltag und in der Anwendung</li>
+            <li>Hinweise zu Pflege, Verpackung oder Versand</li>
+            <li>Verbesserungsvorschläge oder offene Punkte</li>
+          </ul>
+        </article>
+      </div>
+
+      <article class="form-card">
+        <h3>Feedback senden</h3>
+        <p>Kurze Stichpunkte reichen.</p>
+
+        <form id="feedback-form" action="https://formspree.io/f/xnjlpzbb" method="POST">
+          <input type="hidden" name="formular" value="Produktfeedback">
+
+          <div class="form-grid two-cols">
+            <div>
+              <label for="feedback-name">Name</label>
+              <input id="feedback-name" type="text" name="name">
+            </div>
+
+            <div>
+              <label for="feedback-email">E-Mail</label>
+              <input id="feedback-email" type="email" name="email" placeholder="optional für Rückfragen">
+            </div>
+          </div>
+
+          <div class="form-grid two-cols">
+            <div>
+              <label for="feedback-betreff">Betreff</label>
+              <select id="feedback-betreff" name="betreff" required>
+                <option value="">Bitte wählen</option>
+                <option value="Boson Boards">Boson Boards</option>
+                <option value="Quantum Care">Quantum Care</option>
+                <option value="Pflege & Anwendung">Pflege & Anwendung</option>
+                <option value="Gestaltung & Details">Gestaltung & Details</option>
+                <option value="Verpackung & Versand">Verpackung & Versand</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="feedback-produkt">Produkt / Modell</label>
+              <input id="feedback-produkt" type="text" name="produkt" placeholder="z. B. Gluon Board oder CHARM">
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <label for="feedback-nutzung">Nutzung</label>
+              <textarea id="feedback-nutzung" name="nutzung" placeholder="z. B. Einsatz im Alltag, Pflegeintervall oder Nutzungskontext"></textarea>
+            </div>
+
+            <div>
+              <label for="feedback-text">Feedback</label>
+              <textarea id="feedback-text" class="large" name="feedback" placeholder="Was ist aufgefallen? Was hat gut funktioniert? Was könnte klarer oder besser sein?" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="submit-btn" type="submit">Feedback senden</button>
+          </div>
+
+          <p class="form-note">
+            Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Angaben zur Bearbeitung der Rückmeldung einverstanden.
+          </p>
+        </form>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© Holzphysik</div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
