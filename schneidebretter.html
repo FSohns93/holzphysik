@@ -4,486 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Schneidebretter – Holzphysik</title>
-
-  <style>
-    :root {
-      --bg: #0d0b09;
-      --bg-soft: #151210;
-      --card: #1b1714;
-      --text: #f3ede6;
-      --muted: #c8b9a7;
-      --accent: #c79a63;
-      --line: #2c241e;
-      --max: 1120px;
-      --radius: 22px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(13, 11, 9, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .page-hero {
-      padding: 88px 0 56px;
-      background:
-        linear-gradient(to bottom, rgba(10,8,7,0.35), rgba(10,8,7,0.88)),
-        url("assets/banner.png") center/cover no-repeat;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 4vw, 3.9rem);
-      line-height: 1.08;
-    }
-
-    .lead {
-      max-width: 62ch;
-      color: var(--muted);
-      margin: 0;
-      font-size: 1.02rem;
-    }
-
-    section {
-      padding: 64px 0;
-    }
-
-    .section-head {
-      margin-bottom: 28px;
-      max-width: 760px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    .info-card h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-
-    .info-card p,
-    .info-card li {
-      color: var(--muted);
-    }
-
-    .info-card ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .product {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-    }
-
-    .product-image-wrap {
-      position: relative;
-      background: #120f0d;
-    }
-
-    .product img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      display: inline-block;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(13, 11, 9, 0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .product-content {
-      padding: 18px 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-    }
-
-    .product-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .product h3 {
-      margin: 0;
-      font-size: 1.12rem;
-      line-height: 1.25;
-    }
-
-    .price {
-      white-space: nowrap;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(199,154,99,0.12);
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 1px solid rgba(199,154,99,0.16);
-    }
-
-    .product p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .meta {
-      display: grid;
-      gap: 8px;
-      padding-top: 4px;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: var(--muted);
-      font-size: 0.93rem;
-    }
-
-    .meta-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .meta-row strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .product-actions {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-top: 6px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #1b130d;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border-color: rgba(255,255,255,0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .contact-info,
-    .contact-form {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    .contact-info h3,
-    .contact-form h3 {
-      margin-top: 0;
-    }
-
-    .contact-info p,
-    .contact-form p,
-    .contact-info li {
-      color: var(--muted);
-    }
-
-    .contact-info ul {
-      padding-left: 18px;
-      margin: 12px 0 0;
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
-    }
-
-    label {
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 14px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: #120f0d;
-      color: var(--text);
-      font: inherit;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: 1px solid var(--accent);
-      border-color: var(--accent);
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: var(--accent);
-      border: none;
-      color: #1b130d;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-note {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 40px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .toast {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      max-width: 360px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(20, 18, 16, 0.96);
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-      transform: translateY(18px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-      z-index: 2000;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .toast.success {
-      border-color: rgba(80, 160, 100, 0.45);
-      background: rgba(29, 53, 35, 0.96);
-    }
-
-    .toast.error {
-      border-color: rgba(190, 80, 80, 0.45);
-      background: rgba(70, 28, 28, 0.96);
-    }
-
-    @media (max-width: 980px) {
-      .intro-grid,
-      .products,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .nav {
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles/shared.css">
+  <link rel="stylesheet" href="assets/styles/products.css">
 </head>
 <body>
   <header class="site-header">
@@ -504,11 +26,12 @@
   <section class="page-hero">
     <div class="container">
       <div class="eyebrow">Produktkategorie</div>
-      <h1>Schneidebretter mit Funktion und Charakter</h1>
+      <h1>Boson Boards – Schneidebretter mit Charakter</h1>
       <p class="lead">
-        Massive Schneide- und Servierbretter aus Holz mit Fokus auf Material, Verarbeitung
-        und Alltagstauglichkeit. Für Küche, Präsentation oder als individuelles Stück mit Gravur.
+        Klare Formen, ausgewählte Materialien und eine reduzierte Gestaltung.
+        Die Einteilung folgt einer eigenen Systematik – von Gluon über Z bis W.
       </p>
+      <div class="system-flow">Gluon → Z → W</div>
     </div>
   </section>
 
@@ -516,20 +39,20 @@
     <div class="container">
       <div class="intro-grid">
         <div class="info-card">
-          <h3>Gefertigt für Nutzung und Langlebigkeit</h3>
+          <h3>Gestaltung mit System</h3>
           <p>
-            Ein gutes Schneidebrett soll nicht nur gut aussehen, sondern im Alltag überzeugen.
-            Deshalb stehen Materialwahl, Verarbeitung, Oberfläche und ausgewogene Proportionen im Mittelpunkt.
+            Die Boson Boards folgen einer klaren Idee. Kontrast, Ruhe oder Detail
+            stehen nicht für Zufall, sondern für bewusst gestaltete Unterschiede.
           </p>
         </div>
 
         <div class="info-card">
-          <h3>Möglich sind zum Beispiel</h3>
+          <h3>Die Linien</h3>
           <ul>
-            <li>klassische Bretter für Küche und Alltag</li>
-            <li>Servierbretter für Tisch und Präsentation</li>
-            <li>personalisierte Bretter mit Gravur</li>
-            <li>Einzelstücke oder kleine Serien auf Anfrage</li>
+            <li><strong>Gluon Boards</strong> – Kontrast und Materialspiel</li>
+            <li><strong>Z Boards</strong> – ruhig, reduziert und ausgewogen</li>
+            <li><strong>W Boards</strong> – Details, Akzente und markante Präsenz</li>
+            <li>Varianten, Größen und Einzelstücke auf Anfrage</li>
           </ul>
         </div>
       </div>
@@ -540,124 +63,124 @@
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Produkte</div>
-        <h2>Ausgewählte Schneidebretter</h2>
+        <h2>Ausgewählte Boson Boards</h2>
         <p>
-          Hier kannst du erste Produkte und Beispielvarianten zeigen. Die Karten sind bewusst shop-artig,
-          damit Interessenten direkt ein Gefühl für Auswahl, Preisniveau und Anfrageweg bekommen.
+          Die Produktlinien greifen unterschiedliche Eigenschaften auf.
+          So entsteht eine klare, wiedererkennbare Systematik aus Material, Form und Wirkung.
         </p>
       </div>
 
       <div class="products">
         <article class="product">
           <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Massives Schneidebrett">
-            <span class="product-badge">Klassiker</span>
+            <img src="assets/banner.png" alt="Gluon Board">
+            <span class="product-badge">Gluon</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Massives Schneidebrett</h3>
-              <span class="price">ab 49 €</span>
+              <h3>Gluon Board</h3>
+              <span class="price">ab 59 €</span>
             </div>
 
             <p>
-              Solides Brett aus Eiche oder Nussbaum mit klarer Form, hochwertiger Oberfläche
-              und robuster Alltagstauglichkeit.
+              Zweifarbiger Aufbau mit bewusst gesetztem Materialkontrast.
+              Ausdrucksstark, lebendig und klar in der Wirkung.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Größe</span>
-                <strong>ca. 40 × 25 cm</strong>
+                <span>Aufbau</span>
+                <strong>zweifarbig</strong>
               </div>
               <div class="meta-row">
                 <span>Holzart</span>
                 <strong>Eiche / Nussbaum</strong>
               </div>
               <div class="meta-row">
-                <span>Einsatz</span>
-                <strong>Küche & Servieren</strong>
+                <span>Charakter</span>
+                <strong>Kontrast &amp; Verbindung</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Massives Schneidebrett">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="Gluon Board">Anfragen</a>
             </div>
           </div>
         </article>
 
         <article class="product">
           <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Schneidebrett mit Gravur">
-            <span class="product-badge">Gravur</span>
+            <img src="assets/banner.png" alt="Z Board">
+            <span class="product-badge">Z</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Schneidebrett mit Gravur</h3>
-              <span class="price">ab 59 €</span>
+              <h3>Z Board</h3>
+              <span class="price">ab 49 €</span>
             </div>
 
             <p>
-              Personalisierbar mit Name, Motiv oder Logo. Ideal als Geschenk, Einzelstück
-              oder markantes Brett mit persönlichem Bezug.
+              Monochrom und reduziert. Ein Brett mit ruhiger Präsenz,
+              klarer Form und ausgewogener Gesamtwirkung.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Personalisierung</span>
-                <strong>Name / Motiv / Logo</strong>
+                <span>Aufbau</span>
+                <strong>einfarbig</strong>
               </div>
               <div class="meta-row">
                 <span>Holzart</span>
-                <strong>nach Absprache</strong>
+                <strong>Eiche oder Nussbaum</strong>
               </div>
               <div class="meta-row">
-                <span>Geeignet als</span>
-                <strong>Geschenk & Einzelstück</strong>
+                <span>Charakter</span>
+                <strong>ruhig &amp; reduziert</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Schneidebrett mit Gravur">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="Z Board">Anfragen</a>
             </div>
           </div>
         </article>
 
         <article class="product">
           <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Servier- und Präsentationsbrett">
-            <span class="product-badge">Servierbrett</span>
+            <img src="assets/banner.png" alt="W Board">
+            <span class="product-badge">W</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Servier- und Präsentationsbrett</h3>
-              <span class="price">auf Anfrage</span>
+              <h3>W Board</h3>
+              <span class="price">ab 69 €</span>
             </div>
 
             <p>
-              Für Tisch, Küche oder Präsentation mit starker Optik, hochwertiger Haptik
-              und klarer handwerklicher Ausführung.
+              Ergänzt durch Details wie Messing oder Kontrastelemente.
+              Markant, bewusst akzentuiert und eigenständig in der Wirkung.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Einsatz</span>
-                <strong>Tisch & Präsentation</strong>
+                <span>Besonderheit</span>
+                <strong>Details &amp; Einlässe</strong>
               </div>
               <div class="meta-row">
-                <span>Form</span>
-                <strong>Einzelstück / Serie</strong>
+                <span>Optionen</span>
+                <strong>Messing / Akzente</strong>
               </div>
               <div class="meta-row">
-                <span>Besonders gut für</span>
-                <strong>Servieren & Anrichten</strong>
+                <span>Charakter</span>
+                <strong>geladen &amp; markant</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Servier- und Präsentationsbrett">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="W Board">Anfragen</a>
             </div>
           </div>
         </article>
@@ -678,15 +201,17 @@
 
       <div class="contact-wrap">
         <div class="contact-info">
-          <h3>Hinweis zur Anfrage</h3>
+          <h3>Deine Anfrage</h3>
           <p>
-            Für eine schnelle Rückmeldung helfen ein paar Details. Du kannst zum Beispiel angeben:
+            Für eine passende Rückmeldung helfen ein paar kurze Angaben zu Produkt,
+            Ausführung und möglichen Wünschen. So lässt sich schnell einschätzen,
+            welche Variante am besten passt.
           </p>
           <ul>
-            <li>welches Produkt dich interessiert</li>
-            <li>gewünschte Größe oder Holzart</li>
-            <li>Interesse an Gravur oder Personalisierung</li>
-            <li>Fragen zu Preis, Verfügbarkeit oder individueller Anfertigung</li>
+            <li>gewünschtes Modell oder Produktlinie</li>
+            <li>Format, Holzart oder Einsatzbereich</li>
+            <li>Wunsch nach Gravur, Details oder Individualisierung</li>
+            <li>Fragen zu Preis, Verfügbarkeit oder Anfertigung</li>
           </ul>
         </div>
 

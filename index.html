@@ -1,343 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Holzphysik</title>
-  <style>
-    :root {
-      --bg: #0d0b09;
-      --bg-soft: #151210;
-      --card: #1b1714;
-      --text: #f3ede6;
-      --muted: #c8b9a7;
-      --accent: #c79a63;
-      --line: #2c241e;
-      --max: 1100px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holzphysik</title>
+    <link rel="stylesheet" href="assets/styles/shared.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(13, 11, 9, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 86vh;
-      background: url("assets/banner.png") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(8, 7, 6, 0.42), rgba(8, 7, 6, 0.78)),
-        linear-gradient(to right, rgba(8, 7, 6, 0.78), rgba(8, 7, 6, 0.25));
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      max-width: 680px;
-    }
-
-    .hero-logo {
-      width: 120px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.35));
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
-    }
-
-    .hero-copy p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 58ch;
-      margin: 0 0 28px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #1b130d;
-    }
-
-    .btn-primary:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      color: var(--text);
-      border-color: rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .btn-secondary:hover {
-      text-decoration: none;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-card {
-      position: relative;
-      z-index: 1;
-      background: rgba(15, 12, 10, 0.72);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 26px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.28);
-    }
-
-    .hero-card h2 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .hero-card p {
-      margin: 0 0 16px;
-      color: var(--muted);
-    }
-
-    .bullet-list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    section {
-      padding: 76px 0;
-    }
-
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .feature {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px;
-    }
-
-    .feature strong {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .feature span {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .category-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .category-card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background: #120f0d;
-    }
-
-    .category-content {
-      padding: 22px;
-    }
-
-    .category-content h3 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-    }
-
-    .category-content p {
-      margin: 0 0 16px;
-      color: var(--muted);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 40px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 920px) {
-      .hero-inner,
-      .features,
-      .category-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 72px 0;
-      }
-
-      .nav {
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-    }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -354,113 +23,118 @@
       </nav>
     </div>
   </header>
-
+<div class="wip-banner">
+  ⚠️ SEITE IM AUFBAU – KONZEPT & PRODUKTE WERDEN ERWEITERT
+</div>
   <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <img src="assets/logo.png" alt="Holzphysik Logo" class="hero-logo">
-        <div class="eyebrow">Wissenschaftlich gedacht · Handwerklich gemacht</div>
-        <h1>Holzprodukte mit Substanz, Charakter und handwerklicher Präzision</h1>
-        <p>
-          Holzphysik verbindet Materialverständnis, Gestaltung und saubere Verarbeitung.
-          Hier findest du ausgewählte Produktkategorien und erste Stücke. Für Bestellungen,
-          Fragen oder individuelle Anfertigungen läuft der Kontakt aktuell direkt per Anfrage.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="schneidebretter.html">Schneidebretter ansehen</a>
-          <a class="btn btn-secondary" href="pflegeprodukte.html">Pflegeprodukte ansehen</a>
-        </div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">Wissenschaftlich gedacht · Handwerklich gemacht</div>
+      <h1>Holzprodukte mit klarer Gestaltung und eigenem System</h1>
+      <p>
+        Holzphysik steht für reduzierte Gestaltung, saubere Verarbeitung
+        und eine klare Struktur in den Produkten. Boson Boards und
+        Quantum Care bilden zwei eigenständige Produktwelten,
+        die konsequent aufeinander abgestimmt sind.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="schneidebretter.html">Boson Boards ansehen</a>
+        <a class="btn btn-secondary" href="pflegeprodukte.html">Quantum Care ansehen</a>
       </div>
 
-      <div class="hero-card">
-        <h2>Aktuell als Anfrage-Shop</h2>
+      <div class="hero-note">
+        <h2>Direkt und persönlich</h2>
         <p>
-          Statt eines klassischen Warenkorbs zeigst du zunächst Produkte, Preise und Varianten.
-          Interessenten melden sich direkt über das Formular auf der jeweiligen Produktseite.
+          Statt klassischem Shop erfolgt die Auswahl bewusst reduziert.
+          Produkte, Varianten und Einzelstücke werden direkt per Anfrage abgestimmt.
         </p>
-        <ul class="bullet-list">
-          <li>ideal für kleine Serien und Einzelstücke</li>
-          <li>persönliche Abstimmung bei Sonderwünschen</li>
-          <li>später leicht zu einem echten Shop ausbaubar</li>
-        </ul>
       </div>
     </div>
-  </section>
+
+    <div class="hero-visual">
+      <img src="assets/logo.png" alt="Boson Board" class="hero-single-img">
+    </div>
+  </div>
+</section>
 
   <section>
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Marke</div>
-        <h2>Wofür Holzphysik steht</h2>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Marke</div>
+      <h2>Wofür Holzphysik steht</h2>
         <p>
-          Kein überladener Shop, sondern ein klarer Auftritt mit Fokus auf Material,
-          Qualität und Produkte, die für sich sprechen.
+        Holzphysik verbindet Materialverständnis, Gestaltung und System.
+        Die Produkte folgen keiner zufälligen Form, sondern einer klaren Idee:
+        Unterschiede werden sichtbar gemacht – in Kontrast, Ruhe und Detail.
         </p>
-      </div>
+    </div>
 
-      <div class="features">
-        <div class="feature">
-          <strong>Wissenschaft im Hintergrund</strong>
-          <span>Durchdachte Gestaltung und Verständnis für Materialeigenschaften.</span>
-        </div>
-        <div class="feature">
-          <strong>Natur im Material</strong>
-          <span>Holz als lebendiger Werkstoff mit Struktur, Tiefe und Haptik.</span>
-        </div>
-        <div class="feature">
-          <strong>Handwerk im Detail</strong>
-          <span>Sorgfalt in Form, Oberfläche, Proportion und Ausführung.</span>
-        </div>
-        <div class="feature">
-          <strong>Aus Göttingen</strong>
-          <span>Gestaltet und gefertigt mit klarer Handschrift und regionalem Bezug.</span>
-        </div>
+    <div class="features">
+      <div class="feature">
+        <strong>Physik als Konzept</strong>
+        <span>Reduzierte Formen, durchdachte Proportionen und saubere Ausführung - inspiriert durch Teilchenphysik.</span>
+      </div>
+      <div class="feature">
+        <strong>Material im Fokus</strong>
+        <span>Holz bleibt als Werkstoff sichtbar – in Struktur, Farbe und Haptik.</span>
+      </div>
+      <div class="feature">
+        <strong>System statt Zufall</strong>
+        <span>Produkte folgen einer nachvollziehbaren Logik statt beliebiger Varianten.</span>
+      </div>
+      <div class="feature">
+        <strong>Direkte Fertigung</strong>
+        <span>Kleine Serien, Einzelstücke und persönliche Abstimmung.</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section>
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Produktkategorien</div>
-        <h2>Direkt zu den Bereichen</h2>
-        <p>
-          Die Landingpage bleibt bewusst kompakt. Details, Preise und Anfragen laufen
-          über eigene Unterseiten je Produktkategorie.
-        </p>
-      </div>
-
-      <div class="category-grid">
-        <article class="category-card">
-          <img src="assets/banner.png" alt="Schneidebretter">
-          <div class="category-content">
-            <h3>Schneidebretter</h3>
-            <p>
-              Massive Bretter, gravierte Varianten und Einzelstücke mit Fokus auf Funktion,
-              Optik und Langlebigkeit.
-            </p>
-            <a class="btn btn-primary" href="schneidebretter.html">Zur Kategorie</a>
-          </div>
-        </article>
-
-        <article class="category-card">
-          <img src="assets/banner.png" alt="Pflegeprodukte">
-          <div class="category-content">
-            <h3>Pflegeprodukte</h3>
-            <p>
-              Öle und Pflege für Holzoberflächen, abgestimmt auf Schneidebretter und andere
-              Produkte aus Massivholz.
-            </p>
-            <a class="btn btn-primary" href="pflegeprodukte.html">Zur Kategorie</a>
-          </div>
-        </article>
-      </div>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Produktkategorien</div>
+      <h2>Die Produktwelten von Holzphysik</h2>
+      <p>
+        Die Startseite bleibt bewusst kompakt und führt direkt in die beiden zentralen Bereiche:
+        Boson Boards für Schneidebretter und Quantum Care für Pflegeprodukte.
+      </p>
     </div>
-  </section>
+
+    <div class="category-grid">
+      <article class="category-card">
+        <img src="assets/banner.png" alt="Boson Boards">
+        <div class="category-content">
+          <h3>Boson Boards</h3>
+          <p>
+            Schneidebretter mit klarer Einteilung:
+            Gluon Boards mit Kontrast, Z Boards mit Ruhe und
+            W Boards mit gezielten Details.
+            </p>
+          <a class="btn btn-primary" href="schneidebretter.html">Zur Kategorie</a>
+        </div>
+      </article>
+
+      <article class="category-card">
+        <img src="assets/banner.png" alt="Quantum Care">
+        <div class="category-content">
+          <h3>Quantum Care</h3>
+          <p>
+            Pflegeprodukte in drei Stufen – von leichter Auffrischung
+            bis intensiver Behandlung. Einfach strukturiert und
+            direkt anwendbar.
+            </p>
+          <a class="btn btn-primary" href="pflegeprodukte.html">Zur Kategorie</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
   <footer>
     <div class="container footer-inner">
-      <div>© Holzphysik</div>
+      <div>© Holzphysik · Handwerk trifft Teilchenphysik</div>
       <div class="footer-links">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>

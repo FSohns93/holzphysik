@@ -4,486 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pflegeprodukte – Holzphysik</title>
-
-  <style>
-    :root {
-      --bg: #0d0b09;
-      --bg-soft: #151210;
-      --card: #1b1714;
-      --text: #f3ede6;
-      --muted: #c8b9a7;
-      --accent: #c79a63;
-      --line: #2c241e;
-      --max: 1120px;
-      --radius: 22px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(13, 11, 9, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .page-hero {
-      padding: 88px 0 56px;
-      background:
-        linear-gradient(to bottom, rgba(10,8,7,0.35), rgba(10,8,7,0.88)),
-        url("assets/banner.png") center/cover no-repeat;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 4vw, 3.9rem);
-      line-height: 1.08;
-    }
-
-    .lead {
-      max-width: 62ch;
-      color: var(--muted);
-      margin: 0;
-      font-size: 1.02rem;
-    }
-
-    section {
-      padding: 64px 0;
-    }
-
-    .section-head {
-      margin-bottom: 28px;
-      max-width: 760px;
-    }
-
-    .section-head h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .info-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    .info-card h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-
-    .info-card p,
-    .info-card li {
-      color: var(--muted);
-    }
-
-    .info-card ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .product {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-    }
-
-    .product-image-wrap {
-      position: relative;
-      background: #120f0d;
-    }
-
-    .product img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      display: inline-block;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(13, 11, 9, 0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .product-content {
-      padding: 18px 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-    }
-
-    .product-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .product h3 {
-      margin: 0;
-      font-size: 1.12rem;
-      line-height: 1.25;
-    }
-
-    .price {
-      white-space: nowrap;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(199,154,99,0.12);
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 1px solid rgba(199,154,99,0.16);
-    }
-
-    .product p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .meta {
-      display: grid;
-      gap: 8px;
-      padding-top: 4px;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      color: var(--muted);
-      font-size: 0.93rem;
-    }
-
-    .meta-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .meta-row strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .product-actions {
-      margin-top: auto;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding-top: 6px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #1b130d;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border-color: rgba(255,255,255,0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .contact-info,
-    .contact-form {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-    }
-
-    .contact-info h3,
-    .contact-form h3 {
-      margin-top: 0;
-    }
-
-    .contact-info p,
-    .contact-form p,
-    .contact-info li {
-      color: var(--muted);
-    }
-
-    .contact-info ul {
-      padding-left: 18px;
-      margin: 12px 0 0;
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
-    }
-
-    label {
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 14px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: #120f0d;
-      color: var(--text);
-      font: inherit;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: 1px solid var(--accent);
-      border-color: var(--accent);
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: var(--accent);
-      border: none;
-      color: #1b130d;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-note {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 40px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .toast {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      max-width: 360px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(20, 18, 16, 0.96);
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-      transform: translateY(18px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-      z-index: 2000;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .toast.success {
-      border-color: rgba(80, 160, 100, 0.45);
-      background: rgba(29, 53, 35, 0.96);
-    }
-
-    .toast.error {
-      border-color: rgba(190, 80, 80, 0.45);
-      background: rgba(70, 28, 28, 0.96);
-    }
-
-    @media (max-width: 980px) {
-      .intro-grid,
-      .products,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .nav {
-        padding: 14px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles/shared.css">
+  <link rel="stylesheet" href="assets/styles/products.css">
 </head>
 <body>
   <header class="site-header">
@@ -504,11 +26,12 @@
   <section class="page-hero">
     <div class="container">
       <div class="eyebrow">Produktkategorie</div>
-      <h1>Pflegeprodukte für Holzoberflächen</h1>
+      <h1>Quantum Care – Pflege in drei Stufen</h1>
       <p class="lead">
-        Pflegeprodukte für Schneidebretter, Servierbretter und andere Holzprodukte.
-        Für Schutz, Langlebigkeit und eine schöne, natürliche Oberfläche.
+        Drei abgestimmte Produkte für die Holzpflege: Vorbereitung, Balance und Finish.
+        Klar aufgebaut, direkt anwendbar und als System gedacht.
       </p>
+      <div class="system-flow">UP → CHARM → TOP</div>
     </div>
   </section>
 
@@ -516,21 +39,20 @@
     <div class="container">
       <div class="intro-grid">
         <div class="info-card">
-          <h3>Pflege, die zum Material passt</h3>
+          <h3>Pflege mit System</h3>
           <p>
-            Gute Holzpflege schützt nicht nur die Oberfläche, sondern erhält auch Haptik,
-            Optik und Lebensdauer. Die Produkte hier sind als Ergänzung zu Holzphysik-Produkten
-            gedacht oder für bestehende Holzoberflächen geeignet.
+            Quantum Care folgt einer klaren Reihenfolge. Jede Stufe hat eine eigene Aufgabe,
+            sodass Pflege, Schutz und Finish nachvollziehbar aufgebaut sind.
           </p>
         </div>
 
         <div class="info-card">
-          <h3>Geeignet für</h3>
+          <h3>Die Pflege-Stufen</h3>
           <ul>
-            <li>Schneidebretter und Servierbretter</li>
-            <li>regelmäßige Auffrischung trockener Oberflächen</li>
-            <li>Pflege zwischen den Nutzungsphasen</li>
-            <li>Kombination mit neuen Produkten oder Nachkauf</li>
+            <li><strong>UP</strong> – Deep Care für die Grundbehandlung</li>
+            <li><strong>CHARM</strong> – Balance Care für Schutz und Pflege</li>
+            <li><strong>TOP</strong> – Finish Care für die abschließende Oberfläche</li>
+            <li>Einzeln oder als abgestimmtes System kombinierbar</li>
           </ul>
         </div>
       </div>
@@ -543,122 +65,122 @@
         <div class="eyebrow">Produkte</div>
         <h2>Ausgewählte Pflegeprodukte</h2>
         <p>
-          Hier kannst du einzelne Produkte, Sets und ergänzende Pflegeartikel zeigen.
-          Die Karten wirken bewusst etwas shop-artiger, ohne dass du schon einen echten Shop brauchst.
+          Die drei Produkte greifen ineinander. So entsteht eine ruhige,
+          verständliche Produktlogik statt einzelner, beliebiger Pflegeoptionen.
         </p>
       </div>
 
       <div class="products">
-        <article class="product">
-          <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Holzpflegeöl">
-            <span class="product-badge">Pflegeöl</span>
+        <article class="product product-up is-inactive">
+          <div class="product-image-wrap product-overlay sold-out">
+            <img src="assets/banner.png" alt="Quantum Care – UP">
+            <span class="product-badge">UP</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Holzpflegeöl</h3>
+              <h3>Quantum Care – <span>UP</span></h3>
               <span class="price">9 €</span>
             </div>
 
             <p>
-              Zur regelmäßigen Pflege und Auffrischung von Schneidebrettern und anderen
-              Holzoberflächen mit natürlichem Finish.
+              Deep Care für die erste Behandlung. Zieht in das Holz ein,
+              frischt trockene Oberflächen auf und bereitet auf weitere Pflege vor.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Inhalt</span>
-                <strong>100 ml</strong>
+                <span>Pflegestufe</span>
+                <strong>Tiefenpflege</strong>
               </div>
               <div class="meta-row">
                 <span>Einsatz</span>
-                <strong>Pflege & Auffrischung</strong>
+                <strong>Einziehen &amp; Grundpflege</strong>
               </div>
               <div class="meta-row">
                 <span>Geeignet für</span>
-                <strong>Bretter & Holzoberflächen</strong>
+                <strong>erste Behandlung &amp; trockene Oberflächen</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Holzpflegeöl">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="Quantum Care – UP">Anfragen</a>
             </div>
           </div>
         </article>
 
-        <article class="product">
+        <article class="product product-charm">
           <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Pflegewachs für Holz">
-            <span class="product-badge">Wachs</span>
+            <img src="assets/banner.png" alt="Quantum Care – CHARM">
+            <span class="product-badge">CHARM</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Pflegewachs</h3>
+              <h3>Quantum Care – <span>CHARM</span></h3>
               <span class="price">12 €</span>
             </div>
 
             <p>
-              Unterstützt Schutz und Oberflächengefühl mit einem angenehm natürlichen Finish.
-              Ideal für Nachbehandlung und längere Haltbarkeit.
+              Balance Care für Schutz, Haptik und eine gleichmäßige Oberfläche.
+              Für die regelmäßige Pflege und ein stabiles, ruhiges Ergebnis.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Inhalt</span>
-                <strong>80 ml</strong>
+                <span>Pflegestufe</span>
+                <strong>Intensivpflege</strong>
               </div>
               <div class="meta-row">
                 <span>Einsatz</span>
-                <strong>Schutz & Finish</strong>
+                <strong>Balance &amp; Schutz</strong>
               </div>
               <div class="meta-row">
-                <span>Besonders gut für</span>
-                <strong>stärker beanspruchte Flächen</strong>
+                <span>Geeignet für</span>
+                <strong>regelmäßige Anwendung</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Pflegewachs">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="Quantum Care – CHARM">Anfragen</a>
             </div>
           </div>
         </article>
 
-        <article class="product">
+        <article class="product product-top-card">
           <div class="product-image-wrap">
-            <img src="assets/banner.png" alt="Pflegeset für Holzprodukte">
-            <span class="product-badge">Set</span>
+            <img src="assets/banner.png" alt="Quantum Care – TOP">
+            <span class="product-badge">TOP</span>
           </div>
 
           <div class="product-content">
             <div class="product-top">
-              <h3>Pflegeset</h3>
+              <h3>Quantum Care – <span>TOP</span></h3>
               <span class="price">ab 18 €</span>
             </div>
 
             <p>
-              Kombination aus Öl und ergänzendem Pflegeprodukt für die einfache Pflege zu Hause.
-              Auch gut als Ergänzung zum Produktkauf.
+              Finish Care für die abschließende Oberfläche. Sorgt für einen geschützten,
+              glatten Abschluss und rundet die Pflege sichtbar ab.
             </p>
 
             <div class="meta">
               <div class="meta-row">
-                <span>Inhalt</span>
-                <strong>Öl + Pflegeprodukt</strong>
+                <span>Pflegestufe</span>
+                <strong>Finish</strong>
               </div>
               <div class="meta-row">
                 <span>Einsatz</span>
-                <strong>Komplettpflege</strong>
+                <strong>Oberflächenveredelung</strong>
               </div>
               <div class="meta-row">
-                <span>Geeignet als</span>
-                <strong>Nachkauf oder Geschenkset</strong>
+                <span>Geeignet für</span>
+                <strong>letzter Pflegeschritt</strong>
               </div>
             </div>
 
             <div class="product-actions">
-              <a class="btn" href="#kontakt" data-product="Pflegeset">Anfragen</a>
+              <a class="btn" href="#kontakt" data-product="Quantum Care – TOP">Anfragen</a>
             </div>
           </div>
         </article>
@@ -672,8 +194,8 @@
         <div class="eyebrow">Anfrage</div>
         <h2>Fragen oder Interesse an einem Produkt</h2>
         <p>
-          Du kannst direkt angeben, welches Pflegeprodukt dich interessiert und ob du Fragen
-          zu Menge, Anwendung oder Kombination mit einem anderen Produkt hast.
+          Du kannst direkt angeben, welche Stufe dich interessiert und ob du Fragen zu Anwendung,
+          Reihenfolge oder der Kombination mit einem anderen Produkt hast.
         </p>
       </div>
 
@@ -684,9 +206,9 @@
             Für eine schnelle Rückmeldung helfen ein paar Details. Du kannst zum Beispiel angeben:
           </p>
           <ul>
-            <li>welches Produkt dich interessiert</li>
-            <li>ob du es zusammen mit einem Schneidebrett anfragen möchtest</li>
-            <li>Fragen zu Anwendung oder Pflegeintervallen</li>
+            <li>welche Stufe dich interessiert: UP, CHARM oder TOP</li>
+            <li>ob du sie zusammen mit einem Schneidebrett anfragen möchtest</li>
+            <li>Fragen zu Anwendung, Reihenfolge oder Pflegeintervallen</li>
             <li>Wunsch nach Set, Einzelprodukt oder Nachkauf</li>
           </ul>
         </div>
@@ -709,7 +231,7 @@
 
             <div>
               <label for="message">Nachricht</label>
-              <textarea id="message" name="message" placeholder="Ich interessiere mich für ..."></textarea>
+              <textarea id="message" name="message" placeholder="Ich interessiere mich für Quantum Care – ..."></textarea>
             </div>
 
             <button id="submitBtn" class="submit-btn" type="submit">Anfrage senden</button>

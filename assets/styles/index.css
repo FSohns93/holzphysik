@@ -1,0 +1,173 @@
+.hero {
+  position: relative;
+  min-height: 86vh;
+  background: url("../banner.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8, 7, 6, 0.72), rgba(8, 7, 6, 0.93)),
+    linear-gradient(to right, rgba(8, 7, 6, 0.9), rgba(8, 7, 6, 0.58));
+}
+
+.wip-banner {
+  background: var(--accent);
+  color: #1b130d;
+  text-align: center;
+  padding: 10px 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 680px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.3rem, 5vw, 4.6rem);
+  line-height: 1.05;
+  margin: 0 0 16px;
+}
+
+.hero-copy p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  max-width: 50ch;
+  margin: 0 0 28px;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-single-img {
+  width: 100%;
+  max-width: 460px;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  transform: rotate(-3deg);
+}
+
+.hero-note {
+  margin-top: 38px;
+  padding: 20px 22px;
+  background: rgba(15, 12, 10, 0.72);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+  max-width: 520px;
+}
+
+.hero-note h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.hero-note p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.feature {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.feature strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.feature span {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.category-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.category-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #120f0d;
+}
+
+.category-content {
+  padding: 22px;
+}
+
+.category-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+}
+
+.category-content p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 920px) {
+  .hero-inner,
+  .features,
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 72px 0;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-single-img {
+    max-width: 100%;
+    transform: none;
+  }
+}
