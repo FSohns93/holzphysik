@@ -170,7 +170,19 @@
         0 0 0 1px rgba(199, 154, 99, 0.22);
     }
 
+    .image-choice:hover .image-choice-card.is-selected {
+      transform: scale(1.03);
+      border-color: var(--accent);
+      box-shadow:
+        0 24px 48px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(199, 154, 99, 0.22);
+    }
+
     .image-choice-card.is-selected img {
+      transform: scale(1.04);
+    }
+
+    .image-choice:hover .image-choice-card.is-selected img {
       transform: scale(1.04);
     }
 
