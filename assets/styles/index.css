@@ -130,6 +130,38 @@
   max-width: 38ch;
 }
 
+.survey-spotlight {
+  padding: 0 0 18px;
+}
+
+.survey-spotlight-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(199,154,99,0.08), rgba(199,154,99,0.02)),
+    rgba(18, 15, 13, 0.92);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.18);
+}
+
+.survey-spotlight-copy {
+  max-width: 58ch;
+}
+
+.survey-spotlight-card h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+}
+
+.survey-spotlight-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .section-head-tight p {
   max-width: 55ch;
 }
@@ -246,6 +278,11 @@
   .hero-copy h1 {
     max-width: none;
     margin-bottom: 18px;
+  }
+
+  .survey-spotlight-card {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .hero-principles {
