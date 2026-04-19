@@ -86,6 +86,11 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
+    .image-choice-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .image-choice-expand {
       position: absolute;
       top: 12px;
@@ -157,7 +162,7 @@
       }
     }
 
-    .image-choice input:checked + .image-choice-card {
+    .image-choice-card.is-selected {
       transform: scale(1.03);
       border-color: var(--accent);
       box-shadow:
@@ -165,12 +170,12 @@
         0 0 0 1px rgba(199, 154, 99, 0.22);
     }
 
-    .image-choice input:checked + .image-choice-card img {
+    .image-choice-card.is-selected img {
       transform: scale(1.04);
     }
 
-    .image-choice input:checked + .image-choice-card::after {
-      content: "Ausgewählt";
+    .image-choice-card.is-selected::after {
+      content: attr(data-rank);
       position: absolute;
       top: 12px;
       right: 12px;
@@ -370,6 +375,9 @@
         <input type="hidden" name="quelle" value="umfrage.html">
         <input type="hidden" name="bild_label" id="bild-label" value="">
         <input type="hidden" name="bild_datei" id="bild-datei" value="">
+        <input type="hidden" name="auswahl_reihenfolge" id="auswahl-reihenfolge" value="">
+        <input type="hidden" name="auswahl_ranking" id="auswahl-ranking" value="">
+        <input type="hidden" name="anzahl_auswahlen" id="anzahl-auswahlen" value="0">
 
         <div class="section-head">
           <div class="eyebrow">Auswahl</div>
@@ -442,6 +450,7 @@
       { id: "bild-05", label: "Variante 5", image: "assets/logo.png" },
       { id: "bild-06", label: "Variante 6", image: "assets/logo.png" }
     ];
+    const maxSelections = 3;
 
     const form = document.getElementById("survey-form");
     const grid = document.getElementById("image-choice-grid");
@@ -450,25 +459,35 @@
     const selectionText = document.getElementById("survey-selected");
     const labelField = document.getElementById("bild-label");
     const fileField = document.getElementById("bild-datei");
+    const rankingField = document.getElementById("auswahl-reihenfolge");
+    const rankingTextField = document.getElementById("auswahl-ranking");
+    const countField = document.getElementById("anzahl-auswahlen");
     const lightbox = document.getElementById("survey-lightbox");
     const lightboxImage = document.getElementById("survey-lightbox-image");
     const lightboxTitle = document.getElementById("survey-lightbox-title");
     const lightboxSelect = document.getElementById("survey-lightbox-select");
     const lightboxClose = document.getElementById("survey-lightbox-close");
     let activePreviewId = null;
+    let selectedOrder = [];
 
     function renderOptions() {
       grid.innerHTML = surveyOptions.map((option, index) => `
-        <label class="image-choice">
+        <div class="image-choice">
           <input
-            type="radio"
+            type="checkbox"
             name="auswahl"
             value="${option.id}"
             data-label="${option.label}"
             data-image="${option.image}"
-            required
           >
-          <span class="image-choice-card">
+          <div
+            class="image-choice-card"
+            data-option="${option.id}"
+            role="checkbox"
+            aria-checked="false"
+            aria-label="${option.label} auswählen"
+            tabindex="0"
+          >
             <button
               class="image-choice-expand"
               type="button"
@@ -488,25 +507,75 @@
               <span>${option.label}</span>
               <span class="image-choice-number">${String(index + 1).padStart(2, "0")}</span>
             </span>
-          </span>
-        </label>
+          </div>
+        </div>
       `).join("");
     }
 
-    function updateSelectionDetails(selectedInput) {
-      if (!selectedInput) {
+    function updateSelectionDetails() {
+      if (!selectedOrder.length) {
         labelField.value = "";
         fileField.value = "";
+        rankingField.value = "";
+        rankingTextField.value = "";
+        countField.value = "0";
         selectionText.textContent = "Noch keine Variante ausgewählt.";
         return;
       }
 
-      const label = selectedInput.dataset.label;
-      const image = selectedInput.dataset.image;
+      const selectedOptions = selectedOrder
+        .map((id) => form.querySelector(`input[name="auswahl"][value="${id}"]`))
+        .filter(Boolean);
+      const labels = selectedOptions.map((input) => input.dataset.label);
+      const images = selectedOptions.map((input) => input.dataset.image);
+      const rankingText = labels.map((label, index) => `${index + 1}. ${label}`).join(" | ");
 
-      labelField.value = label;
-      fileField.value = image;
-      selectionText.textContent = `Ausgewählt: ${label}`;
+      labelField.value = labels.join(" | ");
+      fileField.value = images.join(" | ");
+      rankingField.value = selectedOrder.join(" > ");
+      rankingTextField.value = rankingText;
+      countField.value = String(selectedOrder.length);
+      selectionText.textContent = `Ranking: ${rankingText}`;
+    }
+
+    function syncChoiceCards() {
+      form.querySelectorAll(".image-choice").forEach((choice) => {
+        const input = choice.querySelector('input[name="auswahl"]');
+        const card = choice.querySelector(".image-choice-card");
+        const rank = selectedOrder.indexOf(input.value);
+        const isSelected = rank !== -1;
+
+        input.checked = isSelected;
+        card.classList.toggle("is-selected", isSelected);
+        card.setAttribute("aria-checked", isSelected ? "true" : "false");
+        if (isSelected) {
+          card.setAttribute("data-rank", String(rank + 1));
+        } else {
+          card.removeAttribute("data-rank");
+        }
+      });
+    }
+
+    function setSelection(optionId, shouldSelect) {
+      const existingIndex = selectedOrder.indexOf(optionId);
+
+      if (shouldSelect) {
+        if (existingIndex !== -1) {
+          return true;
+        }
+        if (selectedOrder.length >= maxSelections) {
+          selectionText.textContent = `Du kannst maximal ${maxSelections} Bilder auswählen.`;
+          return false;
+        }
+        selectedOrder.push(optionId);
+      } else if (existingIndex !== -1) {
+        selectedOrder.splice(existingIndex, 1);
+      }
+
+      syncChoiceCards();
+      updateSelectionDetails();
+      successBox.classList.remove("show");
+      return true;
     }
 
     function openLightbox(optionId) {
@@ -530,17 +599,12 @@
     }
 
     function selectOption(optionId) {
-      const input = form.querySelector(`input[name="auswahl"][value="${optionId}"]`);
-      if (!input) {
-        return;
-      }
-
-      input.checked = true;
-      updateSelectionDetails(input);
-      successBox.classList.remove("show");
+      setSelection(optionId, true);
     }
 
     renderOptions();
+    syncChoiceCards();
+    updateSelectionDetails();
 
     grid.addEventListener("click", function (event) {
       const previewButton = event.target.closest("[data-preview]");
@@ -553,25 +617,43 @@
       openLightbox(previewButton.dataset.preview);
     });
 
-    form.addEventListener("change", function (event) {
-      if (event.target.name !== "auswahl") {
+    grid.addEventListener("click", function (event) {
+      const choiceCard = event.target.closest("[data-option]");
+      if (!choiceCard || event.target.closest("[data-preview]")) {
         return;
       }
 
-      updateSelectionDetails(event.target);
-      successBox.classList.remove("show");
+      event.preventDefault();
+      const input = choiceCard.parentElement.querySelector('input[name="auswahl"]');
+      const shouldSelect = !selectedOrder.includes(input.value);
+      setSelection(input.value, shouldSelect);
+    });
+
+    grid.addEventListener("keydown", function (event) {
+      const choiceCard = event.target.closest("[data-option]");
+      if (!choiceCard) {
+        return;
+      }
+
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+
+      event.preventDefault();
+      const input = choiceCard.parentElement.querySelector('input[name="auswahl"]');
+      const shouldSelect = !selectedOrder.includes(input.value);
+      setSelection(input.value, shouldSelect);
     });
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const selectedInput = form.querySelector('input[name="auswahl"]:checked');
-      if (!selectedInput) {
-        selectionText.textContent = "Bitte wähle zuerst ein Bild aus.";
+      if (!selectedOrder.length) {
+        selectionText.textContent = "Bitte wähle zuerst mindestens ein Bild aus.";
         return;
       }
 
-      updateSelectionDetails(selectedInput);
+      updateSelectionDetails();
       submitBtn.disabled = true;
       submitBtn.textContent = "Wird gesendet...";
       successBox.classList.remove("show");
@@ -589,7 +671,9 @@
 
         if (response.ok) {
           form.reset();
-          updateSelectionDetails(null);
+          selectedOrder = [];
+          syncChoiceCards();
+          updateSelectionDetails();
           successBox.classList.add("show");
         } else {
           alert("Die Antwort konnte nicht gesendet werden.");
