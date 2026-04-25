@@ -58,6 +58,29 @@
       gap: 18px;
     }
 
+    .survey-samples {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 8px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .survey-samples img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+    }
+
+    .survey-samples-caption {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
     .image-choice-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -123,11 +146,43 @@
 
     .image-choice-card img {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
       display: block;
       transition: transform 0.35s ease;
       background: #120f0d;
+    }
+
+    .image-choice-preview-stack {
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .image-choice-front,
+    .image-choice-back {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #120f0d;
+    }
+
+    .image-choice-front img {
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      padding: 8px;
+      background: #171310;
+    }
+
+    .image-choice-back {
+      width: 72%;
+      margin-left: auto;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-choice-back img {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      padding: 8px;
+      background: #171310;
     }
 
     .image-choice-meta {
@@ -294,10 +349,14 @@
     }
 
     .survey-lightbox-image-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 16px;
       overflow: auto;
       border-radius: 18px;
       background: #0f0c0a;
       border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px;
     }
 
     .survey-lightbox-image {
@@ -305,6 +364,23 @@
       height: auto;
       display: block;
       object-fit: contain;
+      border-radius: 16px;
+      background: #120f0d;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .survey-lightbox-image.is-front {
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      padding: 10px;
+      background: #171310;
+    }
+
+    .survey-lightbox-image.is-back {
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      padding: 10px;
+      background: #171310;
     }
 
     @media (max-width: 1100px) {
@@ -340,6 +416,10 @@
       .survey-lightbox-top {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .survey-lightbox-image-wrap {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -380,6 +460,18 @@
         Wähle einfach dein Lieblingsbild aus und sende deine Auswahl ab. Die gewählte Variante
         wird per Formspree an die hinterlegte E-Mail-Adresse weitergeleitet.
       </p>
+
+      <div class="survey-samples">
+        <div class="section-head">
+          <div class="eyebrow">Dosen Sammel</div>
+          <h2>Gedruckte Beispiele</h2>
+          <p>Ein schneller Eindruck der bereits ausgedruckten Exemplare.</p>
+        </div>
+        <img src="/assets/dosen_sammel.png" alt="Gedruckte Dosenmotive im Überblick">
+        <p class="survey-samples-caption">
+          Hinweis: Die Schnittqualität der Samples ist aus Testzwecken händisch und nicht final.
+        </p>
+      </div>
 
       <form id="survey-form">
         <input type="hidden" name="_subject" value="Holzphysik Umfrage">
@@ -438,7 +530,7 @@
     </section>
   </main>
 
-  <div id="survey-lightbox" class="survey-lightbox" aria-hidden="true">
+      <div id="survey-lightbox" class="survey-lightbox" aria-hidden="true">
     <div class="survey-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="survey-lightbox-title">
       <div class="survey-lightbox-top">
         <h3 id="survey-lightbox-title" class="survey-lightbox-title">Bildvorschau</h3>
@@ -448,7 +540,8 @@
         </div>
       </div>
       <div class="survey-lightbox-image-wrap">
-        <img id="survey-lightbox-image" class="survey-lightbox-image" src="" alt="">
+        <img id="survey-lightbox-front-image" class="survey-lightbox-image is-front" src="" alt="">
+        <img id="survey-lightbox-back-image" class="survey-lightbox-image is-back" src="" alt="">
       </div>
     </div>
   </div>
@@ -469,13 +562,28 @@
 
   <script>
     const surveyOptions = [
-      { id: "bild-01", label: "Variante 1", image: "/assets/logo.png" },
-      { id: "bild-02", label: "Variante 2", image: "/assets/logo.png" },
-      { id: "bild-03", label: "Variante 3", image: "/assets/logo.png" },
-      { id: "bild-04", label: "Variante 4", image: "/assets/logo.png" },
-      { id: "bild-05", label: "Variante 5", image: "/assets/logo.png" },
-      { id: "bild-06", label: "Variante 6", image: "/assets/logo.png" }
-    ];
+      "template_desert",
+      "template_forest",
+      "template_glacier",
+      "template_gold_royal",
+      "template_original",
+      "template_pastel",
+      "template_rainbow_mix",
+      "template_retro",
+      "template_sky_sunrise",
+      "template_sunset",
+      "template_wood_cherry",
+      "template_wood_teak"
+    ].map((slug) => ({
+      id: slug,
+      label: slug
+        .replace("template_", "")
+        .split("_")
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(" "),
+      frontImage: `/assets/front/color/png/${slug}.png`,
+      backImage: `/assets/back/color/png/${slug}.png`
+    }));
     const maxSelections = 3;
 
     const form = document.getElementById("survey-form");
@@ -489,7 +597,8 @@
     const rankingTextField = document.getElementById("auswahl-ranking");
     const countField = document.getElementById("anzahl-auswahlen");
     const lightbox = document.getElementById("survey-lightbox");
-    const lightboxImage = document.getElementById("survey-lightbox-image");
+    const lightboxFrontImage = document.getElementById("survey-lightbox-front-image");
+    const lightboxBackImage = document.getElementById("survey-lightbox-back-image");
     const lightboxTitle = document.getElementById("survey-lightbox-title");
     const lightboxSelect = document.getElementById("survey-lightbox-select");
     const lightboxClose = document.getElementById("survey-lightbox-close");
@@ -504,7 +613,8 @@
             name="auswahl"
             value="${option.id}"
             data-label="${option.label}"
-            data-image="${option.image}"
+            data-front-image="${option.frontImage}"
+            data-back-image="${option.backImage}"
           >
           <div
             class="image-choice-card"
@@ -528,7 +638,14 @@
                 <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
               </svg>
             </button>
-            <img src="${option.image}" alt="${option.label}">
+            <div class="image-choice-preview-stack">
+              <div class="image-choice-front">
+                <img src="${option.frontImage}" alt="${option.label} Vorderseite">
+              </div>
+              <div class="image-choice-back">
+                <img src="${option.backImage}" alt="${option.label} Rückseite">
+              </div>
+            </div>
             <span class="image-choice-meta">
               <span>${option.label}</span>
               <span class="image-choice-number">${String(index + 1).padStart(2, "0")}</span>
@@ -553,7 +670,7 @@
         .map((id) => form.querySelector(`input[name="auswahl"][value="${id}"]`))
         .filter(Boolean);
       const labels = selectedOptions.map((input) => input.dataset.label);
-      const images = selectedOptions.map((input) => input.dataset.image);
+      const images = selectedOptions.map((input) => `${input.dataset.frontImage} | ${input.dataset.backImage}`);
       const rankingText = labels.map((label, index) => `${index + 1}. ${label}`).join(" | ");
 
       labelField.value = labels.join(" | ");
@@ -611,8 +728,10 @@
       }
 
       activePreviewId = option.id;
-      lightboxImage.src = option.image;
-      lightboxImage.alt = option.label;
+      lightboxFrontImage.src = option.frontImage;
+      lightboxFrontImage.alt = `${option.label} Vorderseite`;
+      lightboxBackImage.src = option.backImage;
+      lightboxBackImage.alt = `${option.label} Rückseite`;
       lightboxTitle.textContent = `${option.label} groß ansehen`;
       lightbox.classList.add("show");
       lightbox.setAttribute("aria-hidden", "false");
