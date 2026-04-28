@@ -346,8 +346,22 @@ footer {
     overflow-x: auto;
     padding-bottom: 10px;
     scroll-snap-type: x proximity;
+    overflow: hidden;
+  }
+  .gallery-track {
+    display: flex;
+    gap: 16px;
   }
 
+  .gallery-track img {
+    height: 220px;
+    width: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    flex: 0 0 auto;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    background: #120f0d;
+  }
   .gallery-scroll img {
     height: 220px;
     width: auto;

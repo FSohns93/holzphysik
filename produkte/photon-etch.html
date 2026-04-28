@@ -173,13 +173,23 @@
         </p>
       </div>
 
-      <div class="gallery-scroll">
-        <img src="/assets/PhotonCuts/coaster_april26/anhaengergray.png" alt="Anhaenger mit Holzphysik Logo Gravur">
-        <img src="/assets/PhotonCuts/coaster_april26/avocado.png" alt="Untersetzer mit Avocado Motiv">
-        <img src="/assets/PhotonCuts/coaster_april26/dragon.png" alt="Untersetzer mit Drachen Motiv">
-        <img src="/assets/PhotonCuts/coaster_april26/evoli1.png" alt="Untersetzer mit Evoli Motiv">
-        <img src="/assets/PhotonCuts/coaster_april26/pineapple.png" alt="Untersetzer mit Ananas Motiv ">
-        <img src="/assets/PhotonCuts/coaster_april26/tree.png" alt="Untersetzer mit Baum Motiv">
+      <div class="gallery-scroll" id="gallery">
+        <div class="gallery-track">
+          <img src="/assets/PhotonCuts/coaster_april26/anhaengergray.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/avocado.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/dragon.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/evoli1.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/pineapple.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/tree.png" alt="">
+
+          <!-- duplicate -->
+          <img src="/assets/PhotonCuts/coaster_april26/anhaengergray.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/avocado.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/dragon.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/evoli1.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/pineapple.png" alt="">
+          <img src="/assets/PhotonCuts/coaster_april26/tree.png" alt="">
+        </div>
       </div>
     </div>
   </section>
@@ -341,5 +351,27 @@
       }
     });
   </script>
+  <script>
+    const gallery = document.getElementById("gallery");
+    let scrollSpeed = 0.3; // smaller = slower
+
+    let isPaused = false;
+
+    gallery.addEventListener("mouseenter", () => isPaused = true);
+    gallery.addEventListener("mouseleave", () => isPaused = false);
+
+    function autoScroll() {
+      if (!isPaused) {
+        gallery.scrollLeft += scrollSpeed;
+
+        if (gallery.scrollLeft >= gallery.scrollWidth / 2) {
+          gallery.scrollLeft = 0;
+        }
+      }
+
+      requestAnimationFrame(autoScroll);
+
+    autoScroll();
+</script>
 </body>
 </html>
