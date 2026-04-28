@@ -301,7 +301,9 @@
 .product-image-wrap.sold-out::before {
   content: "Sold Out";
 }
-
+.product-image-wrap.not-for-sale::before {
+  content: "Not for Sale";
+}
 .product.is-inactive {
   opacity: 0.75;
 }

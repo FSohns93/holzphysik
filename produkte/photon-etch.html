@@ -173,81 +173,22 @@
         </p>
       </div>
 
-      <div class="products">
-        <article class="product">
-          <div class="product-image-wrap">
-            <img src="/assets/dosen_sammel.png" alt="Beispiele für gravierte Motive">
-            <span class="product-badge">Beispiel</span>
-          </div>
+      <div class="gallery-scroll" id="gallery">
+        <!-- Original -->
+        <img src="/assets/PhotonCuts/coaster_april26/anhaengergray.png">
+        <img src="/assets/PhotonCuts/coaster_april26/avocado.png">
+        <img src="/assets/PhotonCuts/coaster_april26/dragoon.png">
+        <img src="/assets/PhotonCuts/coaster_april26/evoli1.png">
+        <img src="/assets/PhotonCuts/coaster_april26/pineapple.png">
+        <img src="/assets/PhotonCuts/coaster_april26/tree.png">
 
-          <div class="product-content">
-            <div class="product-top">
-              <h3>Motivbeispiele</h3>
-              <span class="price">Inspiration</span>
-            </div>
-
-            <p>
-              Vorhandene Beispiele zeigen Richtung, Wirkung und Detailgrad. Sie sind nicht auf feste Motive beschränkt,
-              sondern können als Ausgangspunkt für eigene Ideen dienen.
-            </p>
-
-            <div class="meta">
-              <div class="meta-row">
-                <span>Fokus</span>
-                <strong>Motiv & Stil</strong>
-              </div>
-              <div class="meta-row">
-                <span>Möglich</span>
-                <strong>nach Wunsch anpassen</strong>
-              </div>
-              <div class="meta-row">
-                <span>Format</span>
-                <strong>frei abstimmbar</strong>
-              </div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn" href="#photon-etch-form" data-product="Photon Etch – Motivbeispiele">Personalisierte Anfrage</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product">
-          <div class="product-image-wrap product-overlay prototype">
-            <img src="/assets/banner.png" alt="Individuelle Gravurideen">
-            <span class="product-badge">Custom</span>
-          </div>
-
-          <div class="product-content">
-            <div class="product-top">
-              <h3>Anfertigungen nach Wunsch und Maß</h3>
-              <span class="price">individuell</span>
-            </div>
-
-            <p>
-              Namen, kurze Texte, individuelle Motive, Formate und abgestimmte Serien können speziell für dein Projekt entwickelt werden.
-            </p>
-
-            <div class="meta">
-              <div class="meta-row">
-                <span>Fokus</span>
-                <strong>Personalisierung</strong>
-              </div>
-              <div class="meta-row">
-                <span>Spielraum</span>
-                <strong>Text, Motiv, Maß</strong>
-              </div>
-              <div class="meta-row">
-                <span>Status</span>
-                <strong>auf Anfrage</strong>
-              </div>
-            </div>
-
-            <div class="product-actions">
-              <a class="btn" href="#photon-etch-form" data-product="Photon Etch – Anfertigung nach Wunsch und Maß">Personalisierte Anfrage</a>
-            </div>
-          </div>
-        </article>
+        <!-- Clone -->
+        <img src="/assets/PhotonCuts/coaster_april26/anhaengergray.png">
+        <img src="/assets/PhotonCuts/coaster_april26/avocado.png">
+        <img src="/assets/PhotonCuts/coaster_april26/dragoon.png">
+        <img src="/assets/PhotonCuts/coaster_april26/evoli1.png">
+        <img src="/assets/PhotonCuts/coaster_april26/pineapple.png">
+        <img src="/assets/PhotonCuts/coaster_april26/tree.png">
       </div>
     </div>
   </section>
@@ -409,5 +350,48 @@
       }
     });
   </script>
+
+  <script>
+    const container = document.getElementById('gallery');
+
+    let speed = 0.35; // super smooth (Apple-like)
+    let isInteracting = false;
+
+    // Auto scroll loop
+    function animate() {
+      if (!isInteracting) {
+        container.scrollLeft += speed;
+      }
+
+      // Seamless loop
+      if (container.scrollLeft >= container.scrollWidth / 2) {
+        container.scrollLeft = 0;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // --- Interactions (very important for premium feel)
+
+    // Maus / Touch → pausieren
+    container.addEventListener('mouseenter', () => isInteracting = true);
+    container.addEventListener('mouseleave', () => isInteracting = false);
+
+    container.addEventListener('touchstart', () => isInteracting = true);
+    container.addEventListener('touchend', () => isInteracting = false);
+
+    // Scroll → kurz pausieren (natürliches Gefühl)
+    let scrollTimeout;
+    container.addEventListener('scroll', () => {
+      isInteracting = true;
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        isInteracting = false;
+      }, 1200);
+    });
+    </script>
 </body>
 </html>
