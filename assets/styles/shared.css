@@ -341,17 +341,16 @@ footer {
     padding-top: 0;
   }
   .gallery-scroll {
-    display: flex;
-    gap: 16px;
+    display: block;         
     overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x proximity;
-    overflow: hidden;
+    max-width: 100%;
   }
-  .gallery-track {
-    display: flex;
-    gap: 16px;
-  }
+
+.gallery-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;      
+}
 
   .gallery-track img {
     height: 220px;
