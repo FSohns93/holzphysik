@@ -337,7 +337,9 @@ footer {
   text-decoration: none;
 }
 
-
+  .about-gallery {
+    padding-top: 0;
+  }
   .gallery-scroll {
     display: flex;
     gap: 16px;
