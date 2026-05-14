@@ -1,0 +1,111 @@
+{
+  "page_key": "schneidebretter",
+  "products": [
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "in-progress"
+      ],
+      "badge": "Gluon",
+      "image": "/assets/banner.png",
+      "image_alt": "Gluon Board",
+      "name": "Gluon Board",
+      "price": "ab 59 €",
+      "description": "Zweifarbiger Aufbau mit bewusst gesetztem Materialkontrast. Ausdrucksstark, lebendig und klar in der Wirkung.",
+      "meta_rows": [
+        {
+          "label": "Aufbau",
+          "value": "zweifarbig"
+        },
+        {
+          "label": "Holzart",
+          "value": "Eiche / Nussbaum"
+        },
+        {
+          "label": "Charakter",
+          "value": "Kontrast & Verbindung"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "Gluon Board"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "in-progress"
+      ],
+      "badge": "Neutral",
+      "image": "/assets/banner.png",
+      "image_alt": "Z Board",
+      "name": "Z Board",
+      "price": "ab 49 €",
+      "description": "Monochrom und reduziert. Ein Brett mit ruhiger Präsenz und klarer Formensprache.",
+      "meta_rows": [
+        {
+          "label": "Aufbau",
+          "value": "einfarbig"
+        },
+        {
+          "label": "Holzart",
+          "value": "Eiche oder Nussbaum"
+        },
+        {
+          "label": "Charakter",
+          "value": "ruhig & reduziert"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "Z Board"
+      }
+    },
+    {
+      "product_classes": [
+        "product",
+        "is-inactive"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "sold"
+      ],
+      "badge": "Charged",
+      "image": "/assets/banner.png",
+      "image_alt": "W Board",
+      "name": "W Board",
+      "price": "ab 69 €",
+      "description": "Ergänzt durch Details wie Messing oder Kontrastelemente. Markant, bewusst akzentuiert und eigenständig.",
+      "meta_rows": [
+        {
+          "label": "Besonderheit",
+          "value": "Details & Einlässe"
+        },
+        {
+          "label": "Optionen",
+          "value": "Messing / Akzente"
+        },
+        {
+          "label": "Charakter",
+          "value": "geladen & markant"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "W Board"
+      }
+    }
+  ]
+}

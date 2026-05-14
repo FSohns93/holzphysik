@@ -1,0 +1,114 @@
+{
+  "page_key": "pflegeprodukte",
+  "products": [
+    {
+      "product_classes": [
+        "product",
+        "product-up",
+        "in-progress"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "in-progress"
+      ],
+      "badge": "UP",
+      "image": "/assets/banner.png",
+      "image_alt": "Quantum Care – UP",
+      "name": "Quantum Care – <span>UP</span>",
+      "price": "9 €",
+      "description": "Deep Care für die Grundbehandlung. Zieht in das Holz ein, frischt trockene Oberflächen auf und bereitet optimal auf weitere Pflege vor.",
+      "meta_rows": [
+        {
+          "label": "Pflegestufe",
+          "value": "Tiefenpflege"
+        },
+        {
+          "label": "Einsatz",
+          "value": "Einziehen & Grundpflege"
+        },
+        {
+          "label": "Geeignet für",
+          "value": "erste Behandlung & trockene Oberflächen"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "Quantum Care – UP"
+      }
+    },
+    {
+      "product_classes": [
+        "product",
+        "product-charm"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "in-progress"
+      ],
+      "badge": "CHARM",
+      "image": "/assets/banner.png",
+      "image_alt": "Quantum Care – CHARM",
+      "name": "Quantum Care – <span>CHARM</span>",
+      "price": "12 €",
+      "description": "Balance Care für Schutz, Haptik und eine ausgewogene Oberfläche. Für die regelmäßige Pflege und spürbar stabile Ergebnisse.",
+      "meta_rows": [
+        {
+          "label": "Pflegestufe",
+          "value": "Intensivpflege"
+        },
+        {
+          "label": "Einsatz",
+          "value": "Balance & Schutz"
+        },
+        {
+          "label": "Geeignet für",
+          "value": "regelmäßige Anwendung"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "Quantum Care – CHARM"
+      }
+    },
+    {
+      "product_classes": [
+        "product",
+        "product-top-card"
+      ],
+      "wrap_classes": [
+        "product-image-wrap",
+        "product-overlay",
+        "in-progress"
+      ],
+      "badge": "TOP",
+      "image": "/assets/banner.png",
+      "image_alt": "Quantum Care – TOP",
+      "name": "Quantum Care – <span>TOP</span>",
+      "price": "ab 18 €",
+      "description": "Finish Care für die abschließende Pflege. Sorgt für eine geschützte, glatte Oberfläche und ein sauberes Endergebnis.",
+      "meta_rows": [
+        {
+          "label": "Pflegestufe",
+          "value": "Finish"
+        },
+        {
+          "label": "Einsatz",
+          "value": "Oberflächenveredelung"
+        },
+        {
+          "label": "Geeignet für",
+          "value": "letzter Pflegeschritt"
+        }
+      ],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": "Quantum Care – TOP"
+      }
+    }
+  ]
+}

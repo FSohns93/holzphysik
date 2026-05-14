@@ -1,0 +1,124 @@
+{
+  "page_key": "photon-cuts",
+  "products": [
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Motive",
+      "image": "/assets/PhotonCuts/BlumenEinzeln.jpg",
+      "image_alt": "Einzelne Blumen",
+      "name": "Holzblume Einzeln",
+      "price": "ab 1€",
+      "description": "Holzblume aus 3mm Sperrholz. Verschiedene Motive, Größen und Formen. Eine Auswahl möglicher Motive lasse ich dir gerne zukommen. Jede Blume kommt mit einem kleinern Halter, damit sie stehen kann.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Fertige Motive"
+        },
+        {
+          "label": "Format",
+          "value": "Einzelstücke"
+        },
+        {
+          "label": "Status",
+          "value": "auf Vorrat"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon cuts – direkt verfügbare Motive"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Motive",
+      "image": "/assets/PhotonCuts/Blumenhalterung.png",
+      "image_alt": "Einzelne Straußhalterung",
+      "name": "Halterung Blumenstrauß",
+      "price": "3€",
+      "description": "Halterung für Holzblumenstraße mit 83 Löchern. Die Halterung ermöglicht es die Holzblumen individuell zu positionieren und so deinen ganz eigenen Blumenstrauß zu erstellen. Die Gravur kann auf nach Wunsch angepasst werden.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Fertige Motive"
+        },
+        {
+          "label": "Format",
+          "value": "Zubehör"
+        },
+        {
+          "label": "Status",
+          "value": "auf Vorrat"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon cuts – direkt verfügbare Motive"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Custom",
+      "image": "/assets/PhotonCuts/BlumenstraußSammelKlein.png",
+      "image_alt": "Personalisiertes Geschenk",
+      "name": "Holz Blumenstrauß",
+      "price": "ab 20€",
+      "description": "Individueller Blumenstrauß mit 20 Holzblumen (3mm dick) und personalisierter Halterung - Gerne graviere ich deinen Wunschtext auf die Halterung. Die Auswahl der Blumen kann abgesprochen werden.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Personalisierung"
+        },
+        {
+          "label": "Einsatz",
+          "value": "Geschenkidee"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – fertige Geschenkideen"
+      }
+    },
+    {
+      "product_classes": [
+        "TestKlasse"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Motive",
+      "image": "/assets/PhotonCuts/BlumenEinzeln.jpg",
+      "image_alt": "Test",
+      "name": "Test",
+      "price": "123",
+      "description": "Test123",
+      "meta_rows": [],
+      "cta": {
+        "label": "Anfragen",
+        "href": "#kontakt",
+        "data_product": ""
+      }
+    }
+  ]
+}
