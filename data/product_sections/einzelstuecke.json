@@ -1,0 +1,169 @@
+{
+  "page_key": "einzelstuecke",
+  "products": [
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Unikat",
+      "images": [
+        {
+          "src": "/assets/PhotonCuts/BandswaBoxSingle1.jpg",
+          "alt": "Bandsägebox Einzelstück 1"
+        },
+        {
+          "src": "/assets/PhotonCuts/BandsawBoxSammel1.jpg",
+          "alt": "Sammelbild der Bandsägeboxen"
+        }
+      ],
+      "name": "Bandsägebox 1",
+      "price": "auf Anfrage",
+      "description": "Handgefertigte Bandsägebox als Einzelstück mit weichen Konturen und besonderer Holzzeichnung. Geeignet als kleines Geschenk oder dekoratives Unikat.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Unikat"
+        },
+        {
+          "label": "Format",
+          "value": "Bandsägebox"
+        },
+        {
+          "label": "Status",
+          "value": "Einzelstück"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#einzelstuecke-form",
+        "data_product": "Einzelstücke – Bandsägebox 1"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Unikat",
+      "images": [
+        {
+          "src": "/assets/PhotonCuts/BandswaBoxSingle2.jpg",
+          "alt": "Bandsägebox Einzelstück 2"
+        },
+        {
+          "src": "/assets/PhotonCuts/BandsawBoxSammel1.jpg",
+          "alt": "Sammelbild der Bandsägeboxen"
+        }
+      ],
+      "name": "Bandsägebox 2",
+      "price": "auf Anfrage",
+      "description": "Zweites Bandsägebox-Einzelstück mit eigenständiger Form und Maserung. Ideal für alle, die ein kleines handwerkliches Objekt mit Charakter suchen.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Unikat"
+        },
+        {
+          "label": "Format",
+          "value": "Bandsägebox"
+        },
+        {
+          "label": "Status",
+          "value": "Einzelstück"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#einzelstuecke-form",
+        "data_product": "Einzelstücke – Bandsägebox 2"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Unikat",
+      "images": [
+        {
+          "src": "/assets/PhotonCuts/BandswaBoxSingle3.jpg",
+          "alt": "Bandsägebox Einzelstück 3"
+        },
+        {
+          "src": "/assets/PhotonCuts/BandsawBoxSammel1.jpg",
+          "alt": "Sammelbild der Bandsägeboxen"
+        }
+      ],
+      "name": "Bandsägebox 3",
+      "price": "auf Anfrage",
+      "description": "Drittes Bandsägebox-Einzelstück aus Holz, gefertigt als dekorative kleine Aufbewahrung mit individueller Ausstrahlung und organischer Form.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Unikat"
+        },
+        {
+          "label": "Format",
+          "value": "Bandsägebox"
+        },
+        {
+          "label": "Status",
+          "value": "Einzelstück"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#einzelstuecke-form",
+        "data_product": "Einzelstücke – Bandsägebox 3"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Einzelstück",
+      "images": [
+        {
+          "src": "/assets/PhotonCuts/Schneidebretter2.jpg",
+          "alt": "Schneidebrett als Einzelstück"
+        },
+        {
+          "src": "/assets/PhotonCuts/Schneidebretter1.jpg",
+          "alt": "Weitere Ansicht eines Schneidebretts"
+        }
+      ],
+      "name": "Schneidebrett",
+      "price": "auf Anfrage",
+      "description": "Schneidebrett als Einzelstück mit eigenständiger Materialwirkung und klarer Form. Geeignet als Geschenkidee oder als Referenz für ähnliche Bretter auf Anfrage.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Handwerk"
+        },
+        {
+          "label": "Format",
+          "value": "Schneidebrett"
+        },
+        {
+          "label": "Status",
+          "value": "Einzelstück"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#einzelstuecke-form",
+        "data_product": "Einzelstücke – Schneidebrett"
+      }
+    }
+  ]
+}

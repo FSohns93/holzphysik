@@ -36,6 +36,12 @@ PAGES = {
         "data": DATA_DIR / "photon_cuts.json",
         "marker": "photon-cuts",
     },
+    "einzelstuecke": {
+        "label": "Einzelstücke",
+        "html": ROOT / "produkte" / "einzelstuecke.html",
+        "data": DATA_DIR / "einzelstuecke.json",
+        "marker": "einzelstuecke",
+    },
 }
 
 
@@ -95,7 +101,38 @@ def list_products(products: list[dict]) -> None:
         return
 
     for index, product in enumerate(products, start=1):
-        print(f"{index}. {product['name']} | {product['price']} | {product['image']}")
+        print(f"{index}. {product['name']} | {product['price']} | {get_primary_image(product)}")
+
+
+def get_product_images(product: dict) -> list[dict]:
+    images = product.get("images")
+    if isinstance(images, list) and images:
+        normalized_images = []
+        for image in images:
+            if isinstance(image, dict) and image.get("src"):
+                normalized_images.append(
+                    {
+                        "src": image["src"],
+                        "alt": image.get("alt") or product.get("image_alt") or product.get("name", ""),
+                    }
+                )
+        if normalized_images:
+            return normalized_images
+
+    legacy_image = product.get("image", "")
+    if legacy_image:
+        return [
+            {
+                "src": legacy_image,
+                "alt": product.get("image_alt") or product.get("name", ""),
+            }
+        ]
+    return []
+
+
+def get_primary_image(product: dict) -> str:
+    images = get_product_images(product)
+    return images[0]["src"] if images else ""
 
 
 def get_meta_value(meta_rows: list[dict], label: str, default: str = "") -> str:
@@ -128,6 +165,7 @@ def edit_product(product: dict | None = None) -> dict:
     current.setdefault("description", "")
     current.setdefault("meta_rows", [])
     current.setdefault("cta", {"label": "Anfragen", "href": "#kontakt", "data_product": ""})
+    current.setdefault("images", get_product_images(current))
 
     print("\nProdukt bearbeiten")
     current["price"] = prompt("Preistext", current["price"])
@@ -144,7 +182,7 @@ def duplicate_product_template(products: list[dict]) -> dict:
         raise ValueError("Ungültige Vorlagen-Nummer.")
     template = json.loads(json.dumps(products[idx]))
     print("\nNeue Produktkarte basiert auf:")
-    print(f"  {template['name']} | {template['image']}")
+    print(f"  {template['name']} | {get_primary_image(template)}")
     print("Name, Bild, Badge, CSS-Klassen und CTA werden aus der Vorlage übernommen.")
     return template
 
@@ -153,6 +191,42 @@ def render_product_card(product: dict) -> str:
     product_classes = " ".join(product["product_classes"])
     wrap_classes = " ".join(product["wrap_classes"])
     badge_html = f'\n            <span class="product-badge">{html.escape(product["badge"])}</span>' if product["badge"] else ""
+    images = get_product_images(product)
+    if not images:
+        raise ValueError(f"Produkt {product.get('name', '<ohne Namen>')} hat kein Bild.")
+
+    gallery_data = [
+        {
+            "src": image["src"],
+            "alt": image["alt"],
+        }
+        for image in images
+    ]
+    gallery_attr = html.escape(json.dumps(gallery_data, ensure_ascii=False), quote=True)
+    gallery_count_html = (
+        f'\n            <span class="product-gallery-count">+{len(images) - 1}</span>'
+        if len(images) > 1
+        else ""
+    )
+    thumbnail_html = ""
+    if len(images) > 1:
+        thumbnail_items = []
+        for index, image in enumerate(images[1:4], start=1):
+            thumbnail_items.append(
+                "          <button"
+                ' class="product-gallery-thumb"'
+                ' type="button"'
+                f' data-gallery="{gallery_attr}"'
+                f' data-gallery-index="{index}"'
+                f' aria-label="{html.escape(product["name"])} Bild {index + 1} öffnen">\n'
+                f'            <img src="{html.escape(image["src"])}" alt="{html.escape(image["alt"])}">\n'
+                "          </button>"
+            )
+        thumbnail_html = (
+            "\n        <div class=\"product-gallery-strip\">\n"
+            + "\n".join(thumbnail_items)
+            + "\n        </div>"
+        )
     meta_html = "\n".join(
         "            <div class=\"meta-row\">\n"
         f"              <span>{html.escape(row['label'])}</span>\n"
@@ -166,11 +240,20 @@ def render_product_card(product: dict) -> str:
     return (
         f"      <article class=\"{product_classes}\">\n"
         f"        <div class=\"{wrap_classes}\">\n"
-        f"          <img src=\"{html.escape(product['image'])}\" alt=\"{html.escape(product['image_alt'])}\">{badge_html}\n"
+        "          <button"
+        " class=\"product-gallery-trigger\""
+        " type=\"button\""
+        f" data-gallery=\"{gallery_attr}\""
+        " data-gallery-index=\"0\""
+        f" aria-label=\"Galerie für {html.escape(product['name'])} öffnen\">\n"
+        f"            <img src=\"{html.escape(images[0]['src'])}\" alt=\"{html.escape(images[0]['alt'])}\">{gallery_count_html}\n"
+        "          </button>"
+        f"{badge_html}\n"
+        f"{thumbnail_html}\n"
         "        </div>\n\n"
         "        <div class=\"product-content\">\n"
         "          <div class=\"product-top\">\n"
-        f"            <h3>{product['name']}</h3>\n"
+        f"            <h3>{html.escape(product['name'])}</h3>\n"
         f"            <span class=\"price\">{html.escape(product['price'])}</span>\n"
         "          </div>\n\n"
         "          <p>\n"
