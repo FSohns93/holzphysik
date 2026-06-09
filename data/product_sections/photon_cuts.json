@@ -287,6 +287,252 @@
         "href": "#photon-cuts-form",
         "data_product": "Photon Cuts – Halterung Blumenstrauß"
       }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Schmuck",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Anhaenger_elegant.jpg",
+          "alt": "Eleganter Holzanhänger mit Gravur"
+        },
+        {
+          "src": "/assets/Schmuck/Anhaenger_elegant.png",
+          "alt": "Freigestellte Ansicht des eleganten Holzanhängers"
+        }
+      ],
+      "name": "Anhänger Elegant",
+      "price": "ab 6 €",
+      "description": "Eleganter Anhänger aus Holz mit feiner Gravur und leichter Form. Geeignet als kleines Geschenk, Schmuckstück oder personalisierte Kleinserie.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Schmuck"
+        },
+        {
+          "label": "Format",
+          "value": "Anhänger"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Anhänger Elegant"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Schmuck",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Anhaenger_Farm.jpg",
+          "alt": "Verspielter Holzanhänger im Farm-Stil"
+        },
+        {
+          "src": "/assets/Schmuck/Anhaenger_Farm.png",
+          "alt": "Freigestellte Ansicht des Farm-Anhängers"
+        }
+      ],
+      "name": "Anhänger Farm",
+      "price": "ab 6 €",
+      "description": "Verspielter Holzanhänger mit rustikalem Charakter. Besonders passend für natürliche Motive, kleine Geschenke oder charmante personalisierte Serien.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Schmuck"
+        },
+        {
+          "label": "Format",
+          "value": "Anhänger"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Anhänger Farm"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Schmuck",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Anhaenger_KunstlederKette.jpg",
+          "alt": "Holzanhänger an Kunstlederkette"
+        },
+        {
+          "src": "/assets/Schmuck/Anhaenger_KunstlederKette.png",
+          "alt": "Freigestellte Ansicht des Anhängers mit Kunstlederkette"
+        }
+      ],
+      "name": "Anhänger mit Kunstlederkette",
+      "price": "ab 8 €",
+      "description": "Lasergefertigter Holzanhänger mit Kunstlederkette als direkt tragbares Schmuckstück. Motiv und Gravur lassen sich je nach Wunsch anpassen.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Schmuck"
+        },
+        {
+          "label": "Format",
+          "value": "Kette"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Anhänger mit Kunstlederkette"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Schmuck",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Ohrringe_elegant.jpg",
+          "alt": "Elegante Holzohrringe"
+        },
+        {
+          "src": "/assets/Schmuck/Ohrringe_elegant.png",
+          "alt": "Freigestellte Ansicht der eleganten Holzohrringe"
+        }
+      ],
+      "name": "Ohrringe Elegant",
+      "price": "ab 8 €",
+      "description": "Feine Holzohrringe mit elegantem Ausdruck und leichtem Tragegefühl. Ideal als kleines Geschenk oder für abgestimmte Schmuckserien.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Schmuck"
+        },
+        {
+          "label": "Format",
+          "value": "Ohrringe"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Ohrringe Elegant"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Schmuck",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Ohrringe_niedlich.jpg",
+          "alt": "Verspielte Holzohrringe"
+        },
+        {
+          "src": "/assets/Schmuck/Ohrringe_niedlich.png",
+          "alt": "Freigestellte Ansicht der verspielten Holzohrringe"
+        }
+      ],
+      "name": "Ohrringe Niedlich",
+      "price": "ab 8 €",
+      "description": "Verspielte Holzohrringe mit freundlichem Charakter. Besonders geeignet für leichte, individuelle Geschenkideen mit eigenem Motiv oder Stil.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Schmuck"
+        },
+        {
+          "label": "Format",
+          "value": "Ohrringe"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Ohrringe Niedlich"
+      }
+    },
+    {
+      "product_classes": [
+        "product"
+      ],
+      "wrap_classes": [
+        "product-image-wrap"
+      ],
+      "badge": "Accessoire",
+      "images": [
+        {
+          "src": "/assets/Schmuck/Schluesselanhaenger_geometrisch.jpg",
+          "alt": "Geometrischer Schlüsselanhänger aus Holz"
+        },
+        {
+          "src": "/assets/Schmuck/Schluesselanhaenger_geometrisch.png",
+          "alt": "Freigestellte Ansicht des geometrischen Schlüsselanhängers"
+        }
+      ],
+      "name": "Schlüsselanhänger Geometrisch",
+      "price": "ab 5 €",
+      "description": "Geometrischer Schlüsselanhänger aus Holz mit klarer Formensprache. Gut geeignet für kleine personalisierte Serien, Vereinsmotive oder Geschenke.",
+      "meta_rows": [
+        {
+          "label": "Fokus",
+          "value": "Accessoire"
+        },
+        {
+          "label": "Format",
+          "value": "Schlüsselanhänger"
+        },
+        {
+          "label": "Status",
+          "value": "individuelle Anfrage"
+        }
+      ],
+      "cta": {
+        "label": "Zum Anfrageformular",
+        "href": "#photon-cuts-form",
+        "data_product": "Photon Cuts – Schlüsselanhänger Geometrisch"
+      }
     }
   ]
 }
